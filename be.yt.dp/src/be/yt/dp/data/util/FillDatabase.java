@@ -30,8 +30,8 @@ public class FillDatabase {
 
 		Stockitem stockItemWitloof = new Stockitem();
 		Stockitem stockHamburger = new Stockitem();
-		 stockService.create(stockItemWitloof);
-		 stockService.create(stockHamburger);
+		stockService.create(stockItemWitloof);
+		stockService.create(stockHamburger);
 
 		Schuif schuif1 = new Schuif();
 		Schuif schuif2 = new Schuif();
@@ -64,7 +64,14 @@ public class FillDatabase {
 		stockHamburger.setProdukt(hamburger);
 		stockHamburger.setCategorie(vlees);
 		stockHamburger.setAantal(3);
-	stockHamburger.setSchuif(schuif2);
+		stockHamburger.setSchuif(schuif2);
+
+		produktService.update(witloof);
+		produktService.update(hamburger);
+		categorieService.update(groenten);
+		categorieService.update(vlees);
+		schuifService.update(schuif2);
+		schuifService.update(schuif1);
 
 		stockService.update(stockItemWitloof);
 		stockService.update(stockHamburger);
