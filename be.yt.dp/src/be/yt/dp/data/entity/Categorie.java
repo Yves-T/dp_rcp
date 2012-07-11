@@ -50,7 +50,7 @@ public class Categorie {
         public void setNaam(String naam) {
                 this.naam = naam;
         }
-        @OneToMany(mappedBy="categorie",cascade = CascadeType.ALL)
+        @OneToMany(mappedBy="categorie")
         public Set<Produkt> getProdukts() {
                 return produkts;
         }
@@ -58,7 +58,7 @@ public class Categorie {
         public void setProdukts(Set<Produkt> produkts) {
                 this.produkts = produkts;
         }
-        @OneToMany(mappedBy="categorie",cascade = CascadeType.ALL)
+        @OneToMany(mappedBy="categorie")
         public Set<Stockitem> getStockitems() {
                 return stockitems;
         }

@@ -45,7 +45,7 @@ public class Schuif {
     public void setDiepvries(Diepvries diepvries) {
         this.diepvries = diepvries;
     }
-    @OneToMany(mappedBy="schuif",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="schuif")
     public Set<Stockitem> getStockitems() {
         return stockitems;
     }

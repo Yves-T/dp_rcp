@@ -40,7 +40,7 @@ public class Diepvries {
         public void setNaam(String naam) {
                 this.naam = naam;
         }
-        @OneToMany(mappedBy="diepvries",cascade = CascadeType.ALL)
+        @OneToMany(mappedBy="diepvries")
         public Set<Schuif> getSchuiven() {
                 return schuiven;
         }
