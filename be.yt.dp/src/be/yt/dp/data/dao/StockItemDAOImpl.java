@@ -10,16 +10,11 @@ import be.yt.dp.data.entity.Stockitem;
 @Creatable
 public class StockItemDAOImpl extends DAO implements StockitemDAO {
 
-        @Override
-        public void create(Stockitem stockitem) {
-                Session session = getCurrentSession();
-                try {
-                        session.save(Stockitem.class.getName(), stockitem);
-                } catch (RuntimeException e) {
-                        session.clear();
-                        throw e;
-                }
-        }
+	@Override
+	public void create(Stockitem stockitem) {
+		Session session = getCurrentSession();
+		session.save(Stockitem.class.getName(), stockitem);
+	}
 
         @Override
         public Stockitem read(int id) {
@@ -30,7 +25,7 @@ public class StockItemDAOImpl extends DAO implements StockitemDAO {
         @Override
         public void update(Stockitem stockitem) {
                 Session session = getCurrentSession();
-                session.update(stockitem);
+                session.update(Stockitem.class.getName(),stockitem);
         }
 
         @Override
