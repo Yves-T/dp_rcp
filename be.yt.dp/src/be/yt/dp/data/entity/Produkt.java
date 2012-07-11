@@ -60,7 +60,7 @@ public class Produkt  {
     public void setNaam(String naam) {
         this.naam = naam;
     }
-    @OneToMany(mappedBy="categorie",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="produkt")
     public Set<Stockitem> getStockitems() {
         return stockitems;
     }
