@@ -39,7 +39,14 @@ public class SchuifServiceImpl implements SchuifService {
 
 	@Override
 	public void update(Schuif schuif) {
-		schuifDAO.update(schuif);
+		try {
+			schuifDAO.beginTransaction();
+			schuifDAO.update(schuif);
+			schuifDAO.commit();
+		} catch (RuntimeException ex) {
+			schuifDAO.rollback();
+			throw ex;
+		}
 	}
 
 	@Override
