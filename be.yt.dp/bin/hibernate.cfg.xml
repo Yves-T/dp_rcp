@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+        <session-factory>
+                <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
+                <property name="hibernate.connection.url">jdbc:derby:frigo;create=true</property>
+                <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
+                <property name="hibernate.connection.username">APP</property>
+                <property name="hibernate.connection.password">APP</property>
+                <property name="hibernate.current_session_context_class">thread</property>
+                <property name="hibernate.show_sql">true</property>
+                <property name="hibernate.format_sql">true</property>
+                <property name="hibernate.use_sql_comments">true</property>
+                <property name="hibernate.hbm2ddl.auto">create</property>
+                <mapping class="be.yt.dp.data.entity.Categorie" />
+                <mapping class="be.yt.dp.data.entity.Diepvries" />
+                <mapping class="be.yt.dp.data.entity.Produkt" />
+                <mapping class="be.yt.dp.data.entity.Schuif" />
+                <mapping class="be.yt.dp.data.entity.Stockitem" />
+        </session-factory>
+</hibernate-configuration>

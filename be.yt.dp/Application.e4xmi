@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_m_5a8MmaEeGkSt1K8Rsovw" elementId="be.yt.dp.application">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_oHkNoMmaEeGkSt1K8Rsovw" elementId="be.yt.dp.trimmedwindow.0" label="Dp" x="100" y="100" width="600" height="600">
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="_b3hi4MmbEeGkSt1K8Rsovw" elementId="be.yt.dp.perspectivestack.0">
+      <children xsi:type="advanced:Perspective" xmi:id="_gGzmwMmbEeGkSt1K8Rsovw" elementId="be.yt.dp.perspective.0" label="Dp">
+        <children xsi:type="basic:PartSashContainer" xmi:id="_mFBRoMmbEeGkSt1K8Rsovw" elementId="be.yt.dp.partsashcontainer.main" horizontal="true">
+          <children xsi:type="basic:PartStack" xmi:id="_pmMSUMmbEeGkSt1K8Rsovw" elementId="be.yt.dp.partstack.0" containerData="30">
+            <children xsi:type="basic:Part" xmi:id="_2-jakMmbEeGkSt1K8Rsovw" elementId="be.yt.dp.part.category" containerData="" contributionURI="bundleclass://be.yt.dp/be.yt.dp.ui.parts.TreeViewerPart" label="Category">
+              <menus xsi:type="menu:PopupMenu" xmi:id="_tfYOwMm5EeGIYcag8Bkcvw" elementId="be.yt.dp.popupmenu.popuptest" label="popuptest"/>
+            </children>
+          </children>
+          <children xsi:type="basic:PartStack" xmi:id="_2f2sYMmbEeGkSt1K8Rsovw" elementId="be.yt.dp.partstack.0" containerData="70">
+            <children xsi:type="basic:Part" xmi:id="_3WA4UMmbEeGkSt1K8Rsovw" elementId="be.yt.dp.part.produkt" containerData="" contributionURI="bundleclass://be.yt.dp/be.yt.dp.ui.parts.ProduktPart" label="Produkt"/>
+          </children>
+        </children>
+      </children>
+    </children>
+    <trimBars xmi:id="_B8EakMmoEeGkSt1K8Rsovw" elementId="be.yt.dp.trimbar.0">
+      <children xsi:type="menu:ToolBar" xmi:id="_GXZWYMmoEeGkSt1K8Rsovw" elementId="be.yt.dp.toolbar.0">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_IGWykMmoEeGkSt1K8Rsovw" elementId="be.yt.dp.handledtoolitem.exit" label="Exit" command="_OwjPIMmnEeGkSt1K8Rsovw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_MKCqcMmoEeGkSt1K8Rsovw" elementId="be.yt.dp.handledtoolitem.newcategory" label="New category" command="_UKnEEMmnEeGkSt1K8Rsovw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_8F908MnKEeGnh_T1a8QE_g" elementId="be.yt.dp.handledtoolitem.newProdukt" label="add Produkt" command="_0PnEEMnHEeGnh_T1a8QE_g"/>
+      </children>
+    </trimBars>
+  </children>
+  <handlers xmi:id="_eZghAMmnEeGkSt1K8Rsovw" elementId="be.yt.dp.handler.exit" contributionURI="bundleclass://be.yt.dp/be.yt.dp.ui.handlers.ExitHandler" command="_OwjPIMmnEeGkSt1K8Rsovw"/>
+  <handlers xmi:id="_x19SoMmnEeGkSt1K8Rsovw" elementId="be.yt.dp.handler.newcategory" contributionURI="bundleclass://be.yt.dp/be.yt.dp.ui.handlers.AddNewCategoryHandler" command="_UKnEEMmnEeGkSt1K8Rsovw"/>
+  <handlers xmi:id="_IlnB8MnKEeGnh_T1a8QE_g" elementId="be.yt.dp.handler.newprodukt" contributionURI="bundleclass://be.yt.dp/be.yt.dp.ui.handlers.AddNewProduktHandler" command="_0PnEEMnHEeGnh_T1a8QE_g"/>
+  <commands xmi:id="_OwjPIMmnEeGkSt1K8Rsovw" elementId="be.yt.dp.command.exit" commandName="Exit"/>
+  <commands xmi:id="_UKnEEMmnEeGkSt1K8Rsovw" elementId="be.yt.dp.command.newcategory" commandName="New Category"/>
+  <commands xmi:id="_0PnEEMnHEeGnh_T1a8QE_g" elementId="be.yt.dp.command.newprodukt" commandName="New Produkt"/>
+  <addons xmi:id="_m_5a8cmaEeGkSt1K8Rsovw" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
+  <addons xmi:id="_m_5a8smaEeGkSt1K8Rsovw" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
+  <addons xmi:id="_m_5a88maEeGkSt1K8Rsovw" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
+  <addons xmi:id="_m_5a9MmaEeGkSt1K8Rsovw" elementId="org.eclipse.e4.ui.workbench.commands.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.CommandProcessingAddon"/>
+  <addons xmi:id="_m_5a9cmaEeGkSt1K8Rsovw" elementId="org.eclipse.e4.ui.workbench.contexts.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.ContextProcessingAddon"/>
+  <addons xmi:id="_m_5a9smaEeGkSt1K8Rsovw" elementId="org.eclipse.e4.ui.workbench.bindings.model" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.swt/org.eclipse.e4.ui.workbench.swt.util.BindingProcessingAddon"/>
+</application:Application>
