@@ -27,3 +27,10 @@ local.properties
 
 delta.pack
 *.jar
+
+**/bin
+/be.yt.dp/bin
+bin
+/be.yt.dp/bin
+*.class
+be.yt.dp/bin/be/yt/dp/data/dao/StockItemDAOImpl.class
