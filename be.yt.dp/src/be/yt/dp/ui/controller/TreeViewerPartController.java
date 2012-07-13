@@ -2,7 +2,10 @@ package be.yt.dp.ui.controller;
 
 import java.util.List;
 
-import be.yt.dp.data.entity.Categorie;
+import dp.Categorie;
+import dp.DpFactory;
+import dp.impl.DpPackageImpl;
+
 import be.yt.dp.data.provider.CategorieModel;
 import be.yt.dp.data.service.CategorieService;
 import be.yt.dp.data.service.CategorieServiceImpl;
@@ -25,7 +28,11 @@ public class TreeViewerPartController {
 	}
 
 	public void addNewCategory(String categoryName) {
-		Categorie category = new Categorie(categoryName);
+		DpPackageImpl.init();
+		DpFactory factory = DpFactory.eINSTANCE;
+		
+		Categorie category =factory.createCategorie();
+		 category .setNaam(categoryName);
 		categorieService.create(category);
 		categorieModel.dataHasChanged();
 	}

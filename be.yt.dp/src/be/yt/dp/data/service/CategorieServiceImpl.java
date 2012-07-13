@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import be.yt.dp.data.dao.CategorieDAO;
 import be.yt.dp.data.dao.CategorieDAOImpl;
-import be.yt.dp.data.entity.Categorie;
+import dp.Categorie;
 
 public class CategorieServiceImpl extends AbstractService implements
                 CategorieService {
@@ -74,8 +74,9 @@ public class CategorieServiceImpl extends AbstractService implements
                         List<Categorie> categorieList = categorieDAO.findall();
                         //initializeCollection(categorieList);
                         for(Categorie categorie:categorieList) {
-                                if(categorie.getProdukts() != null)
-                                categorie.getProdukts().size();
+                                if(categorie.getProdukten() != null)
+                                categorie.getProdukten().size();
+                                System.out.println("size:"+categorie.getProdukten().size());
                         }
                         categorieDAO.commit();
                         return categorieList;

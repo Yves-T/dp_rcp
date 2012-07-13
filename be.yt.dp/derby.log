@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Mon Jul 09 12:45:21 CEST 2012:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0138-6b57-efde-000003572630 
-on database directory C:\Users\ytalboom\frigo  with class loader sun.misc.Launcher$AppClassLoader@6d6f0472 
+Fri Jul 13 13:11:56 CEST 2012:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0138-8009-b78b-0000030c4870 
+on database directory C:\Users\ytalboom\Documents\dp\be.yt.dp\frigo  with class loader sun.misc.Launcher$AppClassLoader@77cde100 
 Loaded from file:/C:/Users/ytalboom/Documents/dp/be.yt.hibernate.core/derby.jar
 java.vendor=Sun Microsystems Inc.
 java.runtime.version=1.6.0_24-b07

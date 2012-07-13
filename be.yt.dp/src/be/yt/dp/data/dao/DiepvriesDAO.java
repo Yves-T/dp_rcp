@@ -1,7 +1,7 @@
 package be.yt.dp.data.dao;
 import java.util.List;
 
-import be.yt.dp.data.entity.Diepvries;
+import dp.Diepvries;
 
 
 public interface DiepvriesDAO {

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link dp.Produkt#getCategories <em>Categories</em>}</li>
  *   <li>{@link dp.Produkt#getStockitem <em>Stockitem</em>}</li>
  *   <li>{@link dp.Produkt#getNaam <em>Naam</em>}</li>
+ *   <li>{@link dp.Produkt#getCategory <em>Category</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,28 +25,26 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Produkt extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Categories</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link dp.Categorie#getProdukt <em>Produkt</em>}'.
+	 * Returns the value of the '<em><b>Categories</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Categories</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Categories</em>' containment reference.
+	 * @return the value of the '<em>Categories</em>' reference.
 	 * @see #setCategories(Categorie)
 	 * @see dp.DpPackage#getProdukt_Categories()
-	 * @see dp.Categorie#getProdukt
-	 * @model opposite="produkt" containment="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	Categorie getCategories();
 
 	/**
-	 * Sets the value of the '{@link dp.Produkt#getCategories <em>Categories</em>}' containment reference.
+	 * Sets the value of the '{@link dp.Produkt#getCategories <em>Categories</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Categories</em>' containment reference.
+	 * @param value the new value of the '<em>Categories</em>' reference.
 	 * @see #getCategories()
 	 * @generated
 	 */
@@ -104,5 +103,33 @@ public interface Produkt extends EObject {
 	 * @generated
 	 */
 	void setNaam(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Category</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link dp.Categorie#getProdukten <em>Produkten</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Category</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Category</em>' container reference.
+	 * @see #setCategory(Categorie)
+	 * @see dp.DpPackage#getProdukt_Category()
+	 * @see dp.Categorie#getProdukten
+	 * @model opposite="produkten" transient="false"
+	 * @generated
+	 */
+	Categorie getCategory();
+
+	/**
+	 * Sets the value of the '{@link dp.Produkt#getCategory <em>Category</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Category</em>' container reference.
+	 * @see #getCategory()
+	 * @generated
+	 */
+	void setCategory(Categorie value);
 
 } // Produkt

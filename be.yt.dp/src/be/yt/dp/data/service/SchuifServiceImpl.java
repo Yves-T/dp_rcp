@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import be.yt.dp.data.dao.SchuifDAO;
 import be.yt.dp.data.dao.SchuifDAOImpl;
-import be.yt.dp.data.entity.Schuif;
+import dp.Schuif;
 
 public class SchuifServiceImpl implements SchuifService {
 	private final SchuifDAO schuifDAO;

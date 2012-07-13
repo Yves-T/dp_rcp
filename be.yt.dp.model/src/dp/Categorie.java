@@ -2,6 +2,7 @@
  */
 package dp;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -13,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link dp.Categorie#getStockitem <em>Stockitem</em>}</li>
- *   <li>{@link dp.Categorie#getProdukt <em>Produkt</em>}</li>
  *   <li>{@link dp.Categorie#getNaam <em>Naam</em>}</li>
+ *   <li>{@link dp.Categorie#getProdukten <em>Produkten</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,32 +53,22 @@ public interface Categorie extends EObject {
 	void setStockitem(StockItem value);
 
 	/**
-	 * Returns the value of the '<em><b>Produkt</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link dp.Produkt#getCategories <em>Categories</em>}'.
+	 * Returns the value of the '<em><b>Produkten</b></em>' containment reference list.
+	 * The list contents are of type {@link dp.Produkt}.
+	 * It is bidirectional and its opposite is '{@link dp.Produkt#getCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Produkt</em>' container reference isn't clear,
+	 * If the meaning of the '<em>Produkten</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Produkt</em>' container reference.
-	 * @see #setProdukt(Produkt)
-	 * @see dp.DpPackage#getCategorie_Produkt()
-	 * @see dp.Produkt#getCategories
-	 * @model opposite="categories" transient="false"
+	 * @return the value of the '<em>Produkten</em>' containment reference list.
+	 * @see dp.DpPackage#getCategorie_Produkten()
+	 * @see dp.Produkt#getCategory
+	 * @model opposite="category" containment="true"
 	 * @generated
 	 */
-	Produkt getProdukt();
-
-	/**
-	 * Sets the value of the '{@link dp.Categorie#getProdukt <em>Produkt</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Produkt</em>' container reference.
-	 * @see #getProdukt()
-	 * @generated
-	 */
-	void setProdukt(Produkt value);
+	EList<Produkt> getProdukten();
 
 	/**
 	 * Returns the value of the '<em><b>Naam</b></em>' attribute.

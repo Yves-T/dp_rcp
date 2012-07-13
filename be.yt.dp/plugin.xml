@@ -38,5 +38,12 @@
          </property>
       </product>
    </extension>
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            class="be.yt.dp.EPackage1"
+            uri="be.yt.dp.package1">
+      </package>
+   </extension>
 
 </plugin>

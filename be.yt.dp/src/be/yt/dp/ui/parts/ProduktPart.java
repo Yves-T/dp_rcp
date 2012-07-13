@@ -25,9 +25,11 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 
-import be.yt.dp.data.entity.Categorie;
-import be.yt.dp.data.entity.Produkt;
-import be.yt.dp.data.entity.Stockitem;
+import dp.Categorie;
+import dp.Produkt;
+import dp.StockItem;
+
+
 import be.yt.dp.data.provider.TableModelProvider;
 
 public class ProduktPart {
@@ -93,8 +95,8 @@ public class ProduktPart {
 		col.setLabelProvider(new ColumnLabelProvider() {
 			@Override
 			public String getText(Object element) {
-				Stockitem stockItem = (Stockitem) element;
-				return stockItem.getProdukt().getNaam();
+				StockItem stockItem = (StockItem) element;
+				return stockItem.getProdukten().getNaam();
 			}
 		});
 	}

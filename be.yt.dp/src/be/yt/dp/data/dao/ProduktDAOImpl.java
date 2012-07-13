@@ -4,7 +4,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import be.yt.dp.data.entity.Produkt;
+import dp.Produkt;
 
 
 public class ProduktDAOImpl extends DAO implements ProduktDAO {

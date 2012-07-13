@@ -4,16 +4,16 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import be.yt.dp.data.entity.Categorie;
+import dp.Categorie;
 
 public class CategorieDAOImpl extends DAO implements CategorieDAO {
 
 
-        @Override
-        public void create(Categorie categorie) {
-                Session session = getCurrentSession();
-                session.save(Categorie.class.getName(), categorie);
-        }
+	@Override
+	public void create(Categorie categorie) {
+		Session session = getCurrentSession();
+		session.save(Categorie.class.getName(), categorie);
+	}
 
     @Override
     public Categorie read(int id) {

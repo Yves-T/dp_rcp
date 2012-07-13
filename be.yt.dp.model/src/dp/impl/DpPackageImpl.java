@@ -206,8 +206,8 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCategorie_Produkt() {
-		return (EReference)categorieEClass.getEStructuralFeatures().get(1);
+	public EReference getCategorie_Produkten() {
+		return (EReference)categorieEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 	 * @generated
 	 */
 	public EAttribute getCategorie_Naam() {
-		return (EAttribute)categorieEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)categorieEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -314,6 +314,15 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getProdukt_Category() {
+		return (EReference)produktEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DpFactory getDpFactory() {
 		return (DpFactory)getEFactoryInstance();
 	}
@@ -347,8 +356,8 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 
 		categorieEClass = createEClass(CATEGORIE);
 		createEReference(categorieEClass, CATEGORIE__STOCKITEM);
-		createEReference(categorieEClass, CATEGORIE__PRODUKT);
 		createEAttribute(categorieEClass, CATEGORIE__NAAM);
+		createEReference(categorieEClass, CATEGORIE__PRODUKTEN);
 
 		diepvriesEClass = createEClass(DIEPVRIES);
 		createEReference(diepvriesEClass, DIEPVRIES__SCHUIVEN);
@@ -362,6 +371,7 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 		createEReference(produktEClass, PRODUKT__CATEGORIES);
 		createEReference(produktEClass, PRODUKT__STOCKITEM);
 		createEAttribute(produktEClass, PRODUKT__NAAM);
+		createEReference(produktEClass, PRODUKT__CATEGORY);
 	}
 
 	/**
@@ -404,8 +414,8 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 
 		initEClass(categorieEClass, Categorie.class, "Categorie", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCategorie_Stockitem(), this.getStockItem(), this.getStockItem_Categorie(), "stockitem", null, 0, 1, Categorie.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCategorie_Produkt(), this.getProdukt(), this.getProdukt_Categories(), "produkt", null, 0, 1, Categorie.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCategorie_Naam(), ecorePackage.getEString(), "naam", null, 0, 1, Categorie.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCategorie_Produkten(), this.getProdukt(), this.getProdukt_Category(), "produkten", null, 0, -1, Categorie.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(diepvriesEClass, Diepvries.class, "Diepvries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDiepvries_Schuiven(), this.getSchuif(), this.getSchuif_Diepvries(), "schuiven", null, 0, -1, Diepvries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -416,9 +426,10 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 		initEReference(getSchuif_Stockitem(), this.getStockItem(), this.getStockItem_Schuif(), "stockitem", null, 0, 1, Schuif.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(produktEClass, Produkt.class, "Produkt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProdukt_Categories(), this.getCategorie(), this.getCategorie_Produkt(), "categories", null, 0, 1, Produkt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProdukt_Categories(), this.getCategorie(), null, "categories", null, 1, 1, Produkt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getProdukt_Stockitem(), this.getStockItem(), this.getStockItem_Produkten(), "stockitem", null, 0, 1, Produkt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProdukt_Naam(), ecorePackage.getEString(), "naam", null, 0, 1, Produkt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProdukt_Category(), this.getCategorie(), this.getCategorie_Produkten(), "category", null, 0, 1, Produkt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -5,7 +5,7 @@ import org.eclipse.e4.core.di.annotations.Creatable;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import be.yt.dp.data.entity.Schuif;
+import dp.Schuif;
 
 
 @Creatable

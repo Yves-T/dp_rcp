@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import be.yt.dp.data.dao.DiepvriesDAO;
 import be.yt.dp.data.dao.DiepvriesDAOImpl;
-import be.yt.dp.data.entity.Diepvries;
+import dp.Diepvries;
 
 public class DiepvriesServiceImpl implements DiepvriesService {
         private final DiepvriesDAO diepvriesDAO;

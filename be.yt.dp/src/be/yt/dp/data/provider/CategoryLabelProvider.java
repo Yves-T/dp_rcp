@@ -10,8 +10,9 @@ import org.eclipse.swt.graphics.Image;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
-import be.yt.dp.data.entity.Categorie;
-import be.yt.dp.data.entity.Produkt;
+import dp.Categorie;
+import dp.Produkt;
+
 
 public class CategoryLabelProvider extends LabelProvider {
 
@@ -21,6 +22,8 @@ public class CategoryLabelProvider extends LabelProvider {
                         Categorie categorie = (Categorie) element;
                         return categorie.getNaam();
                 }
+                Produkt p = (Produkt)element;
+                System.out.println("naam is "+p.getNaam());
                 return ((Produkt)element).getNaam();
         }
 

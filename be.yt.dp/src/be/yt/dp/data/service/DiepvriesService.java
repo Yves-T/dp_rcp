@@ -2,7 +2,7 @@ package be.yt.dp.data.service;
 
 import java.util.List;
 
-import be.yt.dp.data.entity.Diepvries;
+import dp.Diepvries;
 
 public interface DiepvriesService {
         void create(Diepvries diepvries);

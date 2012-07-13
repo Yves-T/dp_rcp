@@ -3,7 +3,7 @@ package be.yt.dp.data.provider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import be.yt.dp.data.entity.Categorie;
+import dp.Categorie;
 
 public class CategorieContentProvider implements ITreeContentProvider {
 
@@ -28,7 +28,7 @@ public class CategorieContentProvider implements ITreeContentProvider {
         public Object[] getChildren(Object parentElement) {
                 if (parentElement instanceof Categorie) {
                         Categorie category = (Categorie) parentElement;
-                        return category.getProdukts().toArray();
+                        return category.getProdukten().toArray();
                 }
                 return null;
         }

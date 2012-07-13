@@ -14,9 +14,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dp.ecore#//StockItem/info"/>
     </genClasses>
     <genClasses ecoreClass="dp.ecore#//Categorie">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dp.ecore#//Categorie/stockitem"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dp.ecore#//Categorie/produkt"/>
+      <genFeatures property="None" notify="false" children="true" createChild="true"
+          ecoreFeature="ecore:EReference dp.ecore#//Categorie/stockitem"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dp.ecore#//Categorie/naam"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dp.ecore#//Categorie/produkten"/>
     </genClasses>
     <genClasses ecoreClass="dp.ecore#//Diepvries">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dp.ecore#//Diepvries/schuiven"/>
@@ -30,6 +31,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dp.ecore#//Produkt/categories"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dp.ecore#//Produkt/stockitem"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dp.ecore#//Produkt/naam"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference dp.ecore#//Produkt/category"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -5,33 +5,33 @@ import org.eclipse.e4.core.di.annotations.Creatable;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import be.yt.dp.data.entity.Stockitem;
+import dp.StockItem;
 
 @Creatable
 public class StockItemDAOImpl extends DAO implements StockitemDAO {
 
 	@Override
-	public void create(Stockitem stockitem) {
+	public void create(StockItem stockitem) {
 		Session session = getCurrentSession();
-		session.save(Stockitem.class.getName(), stockitem);
+		session.save(StockItem.class.getName(), stockitem);
 	}
 
         @Override
-        public Stockitem read(int id) {
+        public StockItem read(int id) {
                 Session session = getCurrentSession();
-                return (Stockitem) session.get(Stockitem.class.getName(), id);
+                return (StockItem) session.get(StockItem.class.getName(), id);
         }
 
         @Override
-        public void update(Stockitem stockitem) {
+        public void update(StockItem stockitem) {
                 Session session = getCurrentSession();
-                session.update(Stockitem.class.getName(),stockitem);
+                session.update(StockItem.class.getName(),stockitem);
         }
 
         @Override
         public void delete(int id) {
                 Session session = getCurrentSession();
-                Stockitem stockitem = read(id);
+                StockItem stockitem = read(id);
                 if (stockitem != null) {
                         session.delete(stockitem);
                         session.flush();
@@ -40,7 +40,7 @@ public class StockItemDAOImpl extends DAO implements StockitemDAO {
 
         @SuppressWarnings("unchecked")
         @Override
-        public List<Stockitem> findall() {
+        public List<StockItem> findall() {
                 Session session = getCurrentSession();
                 Query query = session.createQuery("from Stockitem");
                 return query.list();
@@ -48,7 +48,7 @@ public class StockItemDAOImpl extends DAO implements StockitemDAO {
 
         @SuppressWarnings("unchecked")
         @Override
-        public List<Stockitem> findStockItemsPerCategorie(int catNr) {
+        public List<StockItem> findStockItemsPerCategorie(int catNr) {
                 Session session = getCurrentSession();
                 Query query = session
                                 .createQuery("from Stockitem where categorie.categorie_id = :catNr");
@@ -58,7 +58,7 @@ public class StockItemDAOImpl extends DAO implements StockitemDAO {
 
         @SuppressWarnings("unchecked")
         @Override
-        public List<Stockitem> findStockitems(int catNr, String produktNaam) {
+        public List<StockItem> findStockitems(int catNr, String produktNaam) {
                 Session session = getCurrentSession();
                 Query query = session
                                 .createQuery("from Stockitem where categorie.categorie_id = :catNr"
@@ -68,5 +68,13 @@ public class StockItemDAOImpl extends DAO implements StockitemDAO {
                 query.setString("naam", like);
                 return query.list();
         }
+
+	@Override
+	public List<StockItem> findStockItemsPerCategorie(String naam) {
+		Session session = getCurrentSession();
+		Query query = session.createQuery("from StockItem where categorie.naam = :name");
+		query.setString("name", naam);
+		return query.list();
+	}
 
 } // end class StockItemDAOImpl

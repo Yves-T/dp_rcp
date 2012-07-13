@@ -1,9 +1,11 @@
 package be.yt.dp.data.util;
 
-import be.yt.dp.data.entity.Categorie;
-import be.yt.dp.data.entity.Produkt;
-import be.yt.dp.data.entity.Schuif;
-import be.yt.dp.data.entity.Stockitem;
+import dp.Categorie;
+import dp.DpFactory;
+import dp.Produkt;
+import dp.Schuif;
+import dp.StockItem;
+import dp.impl.DpPackageImpl;
 import be.yt.dp.data.service.CategorieService;
 import be.yt.dp.data.service.CategorieServiceImpl;
 import be.yt.dp.data.service.ProduktService;
@@ -27,41 +29,52 @@ public class FillDatabase {
 	}
 
 	public static void initDb() {
+		
+		DpPackageImpl.init();
+		DpFactory factory = DpFactory.eINSTANCE;
+		
+		Categorie categorie =factory.createCategorie();
+		categorie.setNaam("groenten");
 
-		Stockitem stockItemWitloof = new Stockitem();
-		Stockitem stockHamburger = new Stockitem();
+		StockItem stockItemWitloof = factory.createStockItem();
+		StockItem stockHamburger = factory.createStockItem();
 		stockService.create(stockItemWitloof);
 		stockService.create(stockHamburger);
 
-		Schuif schuif1 = new Schuif();
-		Schuif schuif2 = new Schuif();
+		Schuif schuif1 = factory.createSchuif();
+		Schuif schuif2 = factory.createSchuif();
 		schuifService.create(schuif1);
 		schuifService.create(schuif2);
 
-		Categorie groenten = new Categorie("Groenten");
-		Categorie vlees = new Categorie("Vlees");
+		Categorie groenten = factory.createCategorie();
+		groenten.setNaam("Groenten");
+		Categorie vlees = factory.createCategorie();
+		vlees.setNaam("Vlees");
 		categorieService.create(groenten);
 		categorieService.create(vlees);
 
-		Produkt hamburger = new Produkt("hamburger");
-		Produkt witloof = new Produkt("witloof");
+		Produkt hamburger = factory.createProdukt();
+		hamburger.setNaam("hamburger");
+		Produkt witloof = factory.createProdukt();
+		witloof.setNaam("witloof");
+		hamburger.setCategories(vlees);
+		witloof.setCategories(groenten);
 		produktService.create(hamburger);
 		produktService.create(witloof);
 
-		hamburger.setCategorie(vlees);
-		witloof.setCategorie(groenten);
+		
 		produktService.update(hamburger);
 		produktService.update(witloof);
 
 		categorieService.update(vlees);
 		categorieService.update(groenten);
 
-		stockItemWitloof.setProdukt(witloof);
+		stockItemWitloof.setProdukten(witloof);
 		stockItemWitloof.setCategorie(groenten);
 		stockItemWitloof.setAantal(5);
 		stockItemWitloof.setSchuif(schuif1);
 
-		stockHamburger.setProdukt(hamburger);
+		stockHamburger.setProdukten(hamburger);
 		stockHamburger.setCategorie(vlees);
 		stockHamburger.setAantal(3);
 		stockHamburger.setSchuif(schuif2);

@@ -1,7 +1,7 @@
 package be.yt.dp.data.dao;
 import java.util.List;
 
-import be.yt.dp.data.entity.Schuif;
+import dp.Schuif;
 
 
 public interface SchuifDAO {

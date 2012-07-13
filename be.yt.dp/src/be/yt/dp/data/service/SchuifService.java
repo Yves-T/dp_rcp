@@ -2,7 +2,7 @@ package be.yt.dp.data.service;
 
 import java.util.List;
 
-import be.yt.dp.data.entity.Schuif;
+import dp.Schuif;
 
 public interface SchuifService {
         void create(Schuif schuif);

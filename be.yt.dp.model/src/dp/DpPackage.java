@@ -148,22 +148,22 @@ public interface DpPackage extends EPackage {
 	int CATEGORIE__STOCKITEM = 0;
 
 	/**
-	 * The feature id for the '<em><b>Produkt</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATEGORIE__PRODUKT = 1;
-
-	/**
 	 * The feature id for the '<em><b>Naam</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORIE__NAAM = 2;
+	int CATEGORIE__NAAM = 1;
+
+	/**
+	 * The feature id for the '<em><b>Produkten</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORIE__PRODUKTEN = 2;
 
 	/**
 	 * The number of structural features of the '<em>Categorie</em>' class.
@@ -259,7 +259,7 @@ public interface DpPackage extends EPackage {
 	int PRODUKT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Categories</b></em>' containment reference.
+	 * The feature id for the '<em><b>Categories</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -286,13 +286,22 @@ public interface DpPackage extends EPackage {
 	int PRODUKT__NAAM = 2;
 
 	/**
+	 * The feature id for the '<em><b>Category</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUKT__CATEGORY = 3;
+
+	/**
 	 * The number of structural features of the '<em>Produkt</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUKT_FEATURE_COUNT = 3;
+	int PRODUKT_FEATURE_COUNT = 4;
 
 
 	/**
@@ -393,15 +402,15 @@ public interface DpPackage extends EPackage {
 	EReference getCategorie_Stockitem();
 
 	/**
-	 * Returns the meta object for the container reference '{@link dp.Categorie#getProdukt <em>Produkt</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dp.Categorie#getProdukten <em>Produkten</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Produkt</em>'.
-	 * @see dp.Categorie#getProdukt()
+	 * @return the meta object for the containment reference list '<em>Produkten</em>'.
+	 * @see dp.Categorie#getProdukten()
 	 * @see #getCategorie()
 	 * @generated
 	 */
-	EReference getCategorie_Produkt();
+	EReference getCategorie_Produkten();
 
 	/**
 	 * Returns the meta object for the attribute '{@link dp.Categorie#getNaam <em>Naam</em>}'.
@@ -489,10 +498,10 @@ public interface DpPackage extends EPackage {
 	EClass getProdukt();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dp.Produkt#getCategories <em>Categories</em>}'.
+	 * Returns the meta object for the reference '{@link dp.Produkt#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Categories</em>'.
+	 * @return the meta object for the reference '<em>Categories</em>'.
 	 * @see dp.Produkt#getCategories()
 	 * @see #getProdukt()
 	 * @generated
@@ -520,6 +529,17 @@ public interface DpPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getProdukt_Naam();
+
+	/**
+	 * Returns the meta object for the container reference '{@link dp.Produkt#getCategory <em>Category</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Category</em>'.
+	 * @see dp.Produkt#getCategory()
+	 * @see #getProdukt()
+	 * @generated
+	 */
+	EReference getProdukt_Category();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -620,12 +640,12 @@ public interface DpPackage extends EPackage {
 		EReference CATEGORIE__STOCKITEM = eINSTANCE.getCategorie_Stockitem();
 
 		/**
-		 * The meta object literal for the '<em><b>Produkt</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Produkten</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CATEGORIE__PRODUKT = eINSTANCE.getCategorie_Produkt();
+		EReference CATEGORIE__PRODUKTEN = eINSTANCE.getCategorie_Produkten();
 
 		/**
 		 * The meta object literal for the '<em><b>Naam</b></em>' attribute feature.
@@ -698,7 +718,7 @@ public interface DpPackage extends EPackage {
 		EClass PRODUKT = eINSTANCE.getProdukt();
 
 		/**
-		 * The meta object literal for the '<em><b>Categories</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Categories</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -720,6 +740,14 @@ public interface DpPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PRODUKT__NAAM = eINSTANCE.getProdukt_Naam();
+
+		/**
+		 * The meta object literal for the '<em><b>Category</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRODUKT__CATEGORY = eINSTANCE.getProdukt_Category();
 
 	}
 

@@ -4,7 +4,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import be.yt.dp.data.entity.Diepvries;
+import dp.Diepvries;
 
 
 public class DiepvriesDAOImpl extends DAO implements DiepvriesDAO {

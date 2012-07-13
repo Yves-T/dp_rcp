@@ -2,7 +2,7 @@ package be.yt.dp.data.service;
 
 import java.util.List;
 
-import be.yt.dp.data.entity.Produkt;
+import dp.Produkt;
 
 public interface ProduktService {
 	void create(Produkt produkt);

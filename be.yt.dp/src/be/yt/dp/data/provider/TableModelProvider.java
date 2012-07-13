@@ -1,15 +1,15 @@
 package be.yt.dp.data.provider;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
-import be.yt.dp.data.entity.Categorie;
-import be.yt.dp.data.entity.Produkt;
-import be.yt.dp.data.entity.Stockitem;
 import be.yt.dp.data.service.StockItemService;
 import be.yt.dp.data.service.StockItemServiceImpl;
+import dp.Categorie;
+import dp.DpFactory;
+import dp.Produkt;
+import dp.StockItem;
+import dp.impl.DpPackageImpl;
 
 public class TableModelProvider implements Subject {
 	private StockItemService stockItemService;
@@ -28,17 +28,25 @@ public class TableModelProvider implements Subject {
 		return uniqueInstance;
 	}
 	
-	public List<Stockitem> getProdukts() {
-		List<Stockitem> stockList = null;
+	public List<StockItem> getProdukts() {
+		List<StockItem> stockList = null;
+		
 		if (selectedCategory != null) {
+			System.out.println("inside tablemodelprovider: selected category name"+selectedCategory.getNaam());
 			stockList = stockItemService
 					.findStockItemsPerCategorie(selectedCategory
-							.getCategorie_id());
+							.getNaam());
 		} else {
-			Stockitem stockitem = new Stockitem();
-			Produkt produkt = new Produkt("empty");
-			stockitem.setProdukt(produkt);
-			List<Stockitem>list = new ArrayList<Stockitem>();
+			DpPackageImpl.init();
+			DpFactory factory = DpFactory.eINSTANCE;
+			
+			//Categorie categorie =factory.createCategorie();
+			
+			StockItem stockitem =factory.createStockItem();
+			Produkt produkt = factory.createProdukt();
+			produkt.setNaam("empty");
+			stockitem.setProdukten(produkt);
+			List<StockItem>list = new ArrayList<StockItem>();
 			list.add(stockitem);
 			return list;
 			//stockList = Collections.EMPTY_LIST;
@@ -46,9 +54,9 @@ public class TableModelProvider implements Subject {
 		
 		System.out.println("getProdukts called");
 		if (stockList != null) {
-			for (Stockitem stockitem : stockList) {
+			for (StockItem stockitem : stockList) {
 				System.out.println("produkt name in stocklist="
-						+ stockitem.getProdukt().getNaam());
+						+ stockitem.getProdukten().getNaam());
 			}
 		}
 		

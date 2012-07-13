@@ -1,7 +1,7 @@
 package be.yt.dp.data.service;
 import java.util.List;
+import dp.Categorie;
 
-import be.yt.dp.data.entity.Categorie;
 
 
 public interface CategorieService {

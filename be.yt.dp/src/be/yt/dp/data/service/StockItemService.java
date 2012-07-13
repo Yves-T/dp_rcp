@@ -2,20 +2,22 @@ package be.yt.dp.data.service;
 
 import java.util.List;
 
-import be.yt.dp.data.entity.Stockitem;
+import dp.StockItem;
 
 public interface StockItemService {
-        void create(Stockitem stockItem);
+        void create(StockItem stockItem);
 
-        Stockitem read(int id);
+        StockItem read(int id);
 
-        void update(Stockitem stockitem);
+        void update(StockItem stockitem);
 
         void delete(int id);
 
-        List<Stockitem> findall();
+        List<StockItem> findall();
 
-        List<Stockitem> findStockItemsPerCategorie(int catNr);
+        List<StockItem> findStockItemsPerCategorie(int catNr);
 
-        List<Stockitem> findStockitems(int catNr, String produktNaam);
+        List<StockItem> findStockitems(int catNr, String produktNaam);
+
+		List<StockItem> findStockItemsPerCategorie(String naam);
 }

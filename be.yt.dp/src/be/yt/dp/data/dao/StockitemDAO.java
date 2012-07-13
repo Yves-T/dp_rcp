@@ -1,22 +1,24 @@
 package be.yt.dp.data.dao;
 import java.util.List;
 
-import be.yt.dp.data.entity.Stockitem;
+import dp.StockItem;
 
 
 public interface StockitemDAO {
-        void create(Stockitem stockitem);
+        void create(StockItem stockitem);
 
-        Stockitem read(int id);
+        StockItem read(int id);
 
-        void update(Stockitem stockitem);
+        void update(StockItem stockitem);
 
         void delete(int id);
 
-        List<Stockitem> findall();
+        List<StockItem> findall();
 
-        List<Stockitem> findStockItemsPerCategorie(int catNr);
+        List<StockItem> findStockItemsPerCategorie(int catNr);
 
-        List<Stockitem> findStockitems(int catNr, String produktNaam);
+        List<StockItem> findStockitems(int catNr, String produktNaam);
+        
+         List<StockItem> findStockItemsPerCategorie(String naam);
 
 }

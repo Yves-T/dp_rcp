@@ -8,7 +8,7 @@ import org.eclipse.e4.core.di.annotations.Creatable;
 
 import be.yt.dp.data.dao.ProduktDAO;
 import be.yt.dp.data.dao.ProduktDAOImpl;
-import be.yt.dp.data.entity.Produkt;
+import dp.Produkt;
 
 @Creatable
 public class ProduktServiceImpl extends AbstractService implements

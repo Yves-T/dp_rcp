@@ -12,8 +12,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
-import be.yt.dp.data.entity.Categorie;
-import be.yt.dp.data.entity.Produkt;
+
 import be.yt.dp.data.provider.CategorieContentProvider;
 import be.yt.dp.data.provider.CategorieModel;
 import be.yt.dp.data.provider.CategoryLabelProvider;
@@ -22,6 +21,9 @@ import be.yt.dp.data.util.FillDatabase;
 
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.e4.ui.workbench.swt.modeling.EMenuService;
+
+import dp.Categorie;
+import dp.Produkt;
 
 public class TreeViewerPart implements Observer {
 	private TreeViewer viewer;

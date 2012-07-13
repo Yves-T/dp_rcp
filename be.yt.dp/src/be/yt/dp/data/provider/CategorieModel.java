@@ -3,7 +3,8 @@ package be.yt.dp.data.provider;
 import java.util.ArrayList;
 import java.util.List;
 
-import be.yt.dp.data.entity.Categorie;
+import dp.Categorie;
+
 import be.yt.dp.data.service.CategorieService;
 import be.yt.dp.data.service.CategorieServiceImpl;
 

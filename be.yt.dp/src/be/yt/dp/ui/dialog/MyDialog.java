@@ -24,7 +24,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import be.yt.dp.data.entity.Categorie;
+import dp.Categorie;
 
 public class MyDialog extends TitleAreaDialog {
 	private Text firstNameText;

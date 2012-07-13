@@ -15,9 +15,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Categorie">
     <eStructuralFeatures xsi:type="ecore:EReference" name="stockitem" eType="#//StockItem"
         eOpposite="#//StockItem/categorie"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="produkt" eType="#//Produkt"
-        eOpposite="#//Produkt/categories"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="naam" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="produkten" upperBound="-1"
+        eType="#//Produkt" containment="true" eOpposite="#//Produkt/category"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Diepvries">
     <eStructuralFeatures xsi:type="ecore:EReference" name="schuiven" upperBound="-1"
@@ -31,10 +31,12 @@
         eOpposite="#//StockItem/schuif"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Produkt">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="categories" eType="#//Categorie"
-        containment="true" eOpposite="#//Categorie/produkt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="categories" lowerBound="1"
+        eType="#//Categorie"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stockitem" eType="#//StockItem"
         eOpposite="#//StockItem/produkten"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="naam" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="category" eType="#//Categorie"
+        eOpposite="#//Categorie/produkten"/>
   </eClassifiers>
 </ecore:EPackage>
