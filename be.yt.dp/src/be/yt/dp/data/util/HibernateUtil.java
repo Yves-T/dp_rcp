@@ -33,7 +33,7 @@ public class HibernateUtil {
         		props.setProperty(Environment.PASS, "APP");
         		props.setProperty(Environment.DIALECT,
         				"org.hibernate.dialect.DerbyDialect");
-        		props.setProperty(Environment.SHOW_SQL, "true");
+        		props.setProperty(Environment.SHOW_SQL, "false");
         		props.setProperty(Environment.FORMAT_SQL, "true");
         		props.setProperty(Environment.USE_SQL_COMMENTS, "true");
         		props.setProperty(PersistenceOptions.CASCADE_POLICY_ON_CONTAINMENT,

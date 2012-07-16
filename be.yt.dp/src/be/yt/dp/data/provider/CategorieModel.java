@@ -26,9 +26,14 @@ public class CategorieModel implements Subject {
         	return categorieModel;
         }
 
-        public List<Categorie> getCategories() {
-                return categorieService.findallWithProdukts();
-        }
+	public List<Categorie> getCategories() {
+		List<Categorie> catList = categorieService.findallWithProdukts();
+		for (Categorie categorie : catList) {
+			System.out.println("size of produkts collection in categorie : "
+					+ categorie.getProdukten().size());
+		}
+		return categorieService.findallWithProdukts();
+	}
         
         public void dataHasChanged() {
                 notifyObservers();

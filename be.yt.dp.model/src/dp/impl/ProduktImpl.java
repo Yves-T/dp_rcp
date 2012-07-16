@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link dp.impl.ProduktImpl#getCategories <em>Categories</em>}</li>
  *   <li>{@link dp.impl.ProduktImpl#getStockitem <em>Stockitem</em>}</li>
  *   <li>{@link dp.impl.ProduktImpl#getNaam <em>Naam</em>}</li>
- *   <li>{@link dp.impl.ProduktImpl#getCategory <em>Category</em>}</li>
  * </ul>
  * </p>
  *
@@ -115,11 +114,33 @@ public class ProduktImpl extends EObjectImpl implements Produkt {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCategories(Categorie newCategories) {
+	public NotificationChain basicSetCategories(Categorie newCategories, NotificationChain msgs) {
 		Categorie oldCategories = categories;
 		categories = newCategories;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DpPackage.PRODUKT__CATEGORIES, oldCategories, categories));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DpPackage.PRODUKT__CATEGORIES, oldCategories, newCategories);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCategories(Categorie newCategories) {
+		if (newCategories != categories) {
+			NotificationChain msgs = null;
+			if (categories != null)
+				msgs = ((InternalEObject)categories).eInverseRemove(this, DpPackage.CATEGORIE__PRODUKTEN, Categorie.class, msgs);
+			if (newCategories != null)
+				msgs = ((InternalEObject)newCategories).eInverseAdd(this, DpPackage.CATEGORIE__PRODUKTEN, Categorie.class, msgs);
+			msgs = basicSetCategories(newCategories, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DpPackage.PRODUKT__CATEGORIES, newCategories, newCategories));
 	}
 
 	/**
@@ -189,58 +210,17 @@ public class ProduktImpl extends EObjectImpl implements Produkt {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Categorie getCategory() {
-		if (eContainerFeatureID() != DpPackage.PRODUKT__CATEGORY) return null;
-		return (Categorie)eContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCategory(Categorie newCategory, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newCategory, DpPackage.PRODUKT__CATEGORY, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCategory(Categorie newCategory) {
-		if (newCategory != eInternalContainer() || (eContainerFeatureID() != DpPackage.PRODUKT__CATEGORY && newCategory != null)) {
-			if (EcoreUtil.isAncestor(this, newCategory))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newCategory != null)
-				msgs = ((InternalEObject)newCategory).eInverseAdd(this, DpPackage.CATEGORIE__PRODUKTEN, Categorie.class, msgs);
-			msgs = basicSetCategory(newCategory, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DpPackage.PRODUKT__CATEGORY, newCategory, newCategory));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case DpPackage.PRODUKT__CATEGORIES:
+				if (categories != null)
+					msgs = ((InternalEObject)categories).eInverseRemove(this, DpPackage.CATEGORIE__PRODUKTEN, Categorie.class, msgs);
+				return basicSetCategories((Categorie)otherEnd, msgs);
 			case DpPackage.PRODUKT__STOCKITEM:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetStockitem((StockItem)otherEnd, msgs);
-			case DpPackage.PRODUKT__CATEGORY:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetCategory((Categorie)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -253,10 +233,10 @@ public class ProduktImpl extends EObjectImpl implements Produkt {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case DpPackage.PRODUKT__CATEGORIES:
+				return basicSetCategories(null, msgs);
 			case DpPackage.PRODUKT__STOCKITEM:
 				return basicSetStockitem(null, msgs);
-			case DpPackage.PRODUKT__CATEGORY:
-				return basicSetCategory(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -271,8 +251,6 @@ public class ProduktImpl extends EObjectImpl implements Produkt {
 		switch (eContainerFeatureID()) {
 			case DpPackage.PRODUKT__STOCKITEM:
 				return eInternalContainer().eInverseRemove(this, DpPackage.STOCK_ITEM__PRODUKTEN, StockItem.class, msgs);
-			case DpPackage.PRODUKT__CATEGORY:
-				return eInternalContainer().eInverseRemove(this, DpPackage.CATEGORIE__PRODUKTEN, Categorie.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -292,8 +270,6 @@ public class ProduktImpl extends EObjectImpl implements Produkt {
 				return getStockitem();
 			case DpPackage.PRODUKT__NAAM:
 				return getNaam();
-			case DpPackage.PRODUKT__CATEGORY:
-				return getCategory();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -314,9 +290,6 @@ public class ProduktImpl extends EObjectImpl implements Produkt {
 				return;
 			case DpPackage.PRODUKT__NAAM:
 				setNaam((String)newValue);
-				return;
-			case DpPackage.PRODUKT__CATEGORY:
-				setCategory((Categorie)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -339,9 +312,6 @@ public class ProduktImpl extends EObjectImpl implements Produkt {
 			case DpPackage.PRODUKT__NAAM:
 				setNaam(NAAM_EDEFAULT);
 				return;
-			case DpPackage.PRODUKT__CATEGORY:
-				setCategory((Categorie)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -360,8 +330,6 @@ public class ProduktImpl extends EObjectImpl implements Produkt {
 				return getStockitem() != null;
 			case DpPackage.PRODUKT__NAAM:
 				return NAAM_EDEFAULT == null ? naam != null : !NAAM_EDEFAULT.equals(naam);
-			case DpPackage.PRODUKT__CATEGORY:
-				return getCategory() != null;
 		}
 		return super.eIsSet(featureID);
 	}

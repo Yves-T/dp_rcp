@@ -76,7 +76,7 @@ public class CategorieServiceImpl extends AbstractService implements
                         for(Categorie categorie:categorieList) {
                                 if(categorie.getProdukten() != null)
                                 categorie.getProdukten().size();
-                                System.out.println("size:"+categorie.getProdukten().size());
+                                System.out.println("size categorie - produkten : "+categorie.getProdukten().size());
                         }
                         categorieDAO.commit();
                         return categorieList;

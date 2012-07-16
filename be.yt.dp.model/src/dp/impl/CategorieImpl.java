@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -60,7 +61,7 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	protected String naam = NAAM_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProdukten() <em>Produkten</em>}' containment reference list.
+	 * The cached value of the '{@link #getProdukten() <em>Produkten</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProdukten()
@@ -136,7 +137,7 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	 */
 	public EList<Produkt> getProdukten() {
 		if (produkten == null) {
-			produkten = new EObjectContainmentWithInverseEList<Produkt>(Produkt.class, this, DpPackage.CATEGORIE__PRODUKTEN, DpPackage.PRODUKT__CATEGORY);
+			produkten = new EObjectWithInverseResolvingEList<Produkt>(Produkt.class, this, DpPackage.CATEGORIE__PRODUKTEN, DpPackage.PRODUKT__CATEGORIES);
 		}
 		return produkten;
 	}

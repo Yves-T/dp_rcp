@@ -33,19 +33,22 @@ public class FillDatabase {
 		DpPackageImpl.init();
 		DpFactory factory = DpFactory.eINSTANCE;
 		
-		Categorie categorie =factory.createCategorie();
-		categorie.setNaam("groenten");
+		// Categorie categorie =factory.createCategorie();
+		// categorie.setNaam("groenten");
 
+		//aanmaken van stockitems
 		StockItem stockItemWitloof = factory.createStockItem();
 		StockItem stockHamburger = factory.createStockItem();
 		stockService.create(stockItemWitloof);
 		stockService.create(stockHamburger);
 
+		//aanmaken van schuiven
 		Schuif schuif1 = factory.createSchuif();
 		Schuif schuif2 = factory.createSchuif();
 		schuifService.create(schuif1);
 		schuifService.create(schuif2);
 
+		//aanmaken van categorie
 		Categorie groenten = factory.createCategorie();
 		groenten.setNaam("Groenten");
 		Categorie vlees = factory.createCategorie();
@@ -88,5 +91,16 @@ public class FillDatabase {
 
 		stockService.update(stockItemWitloof);
 		stockService.update(stockHamburger);
+
+		// controle model
+		System.out.println("-- CONTROLE OBJECTEN --");
+		System.out.println("Categorie groenten heeft volgende produkten");
+		for (Produkt p : groenten.getProdukten()) {
+			System.out.println(p.getNaam());
+		}
+
+		System.out.println("Een hamburger heeft als categorie :"
+				+ hamburger.getCategories().getNaam());
+
 	}
 }

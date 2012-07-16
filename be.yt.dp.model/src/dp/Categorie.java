@@ -53,19 +53,19 @@ public interface Categorie extends EObject {
 	void setStockitem(StockItem value);
 
 	/**
-	 * Returns the value of the '<em><b>Produkten</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Produkten</b></em>' reference list.
 	 * The list contents are of type {@link dp.Produkt}.
-	 * It is bidirectional and its opposite is '{@link dp.Produkt#getCategory <em>Category</em>}'.
+	 * It is bidirectional and its opposite is '{@link dp.Produkt#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Produkten</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Produkten</em>' containment reference list.
+	 * @return the value of the '<em>Produkten</em>' reference list.
 	 * @see dp.DpPackage#getCategorie_Produkten()
-	 * @see dp.Produkt#getCategory
-	 * @model opposite="category" containment="true"
+	 * @see dp.Produkt#getCategories
+	 * @model opposite="categories"
 	 * @generated
 	 */
 	EList<Produkt> getProdukten();
