@@ -71,6 +71,10 @@
   <children xmi:type="notation:Node" xmi:id="_aXEMwMy8EeGP-LqWV-kcbg" type="1001">
     <children xmi:type="notation:Node" xmi:id="_aXEz0My8EeGP-LqWV-kcbg" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_aXEz0cy8EeGP-LqWV-kcbg" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_-NKugNALEeGK1PaskaSYFA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="dp.ecore#//Schuif/nummer"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-NKugdALEeGK1PaskaSYFA"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_aXFa4My8EeGP-LqWV-kcbg"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_aXFa4cy8EeGP-LqWV-kcbg"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_aXFa4sy8EeGP-LqWV-kcbg"/>

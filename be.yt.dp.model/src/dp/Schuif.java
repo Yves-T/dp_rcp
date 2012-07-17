@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link dp.Schuif#getDiepvries <em>Diepvries</em>}</li>
  *   <li>{@link dp.Schuif#getStockitem <em>Stockitem</em>}</li>
+ *   <li>{@link dp.Schuif#getNummer <em>Nummer</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,5 +78,31 @@ public interface Schuif extends EObject {
 	 * @generated
 	 */
 	void setStockitem(StockItem value);
+
+	/**
+	 * Returns the value of the '<em><b>Nummer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Nummer</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Nummer</em>' attribute.
+	 * @see #setNummer(int)
+	 * @see dp.DpPackage#getSchuif_Nummer()
+	 * @model
+	 * @generated
+	 */
+	int getNummer();
+
+	/**
+	 * Sets the value of the '{@link dp.Schuif#getNummer <em>Nummer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Nummer</em>' attribute.
+	 * @see #getNummer()
+	 * @generated
+	 */
+	void setNummer(int value);
 
 } // Schuif

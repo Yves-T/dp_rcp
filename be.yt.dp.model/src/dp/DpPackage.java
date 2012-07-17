@@ -240,13 +240,22 @@ public interface DpPackage extends EPackage {
 	int SCHUIF__STOCKITEM = 1;
 
 	/**
+	 * The feature id for the '<em><b>Nummer</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHUIF__NUMMER = 2;
+
+	/**
 	 * The number of structural features of the '<em>Schuif</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHUIF_FEATURE_COUNT = 2;
+	int SCHUIF_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link dp.impl.ProduktImpl <em>Produkt</em>}' class.
@@ -479,6 +488,17 @@ public interface DpPackage extends EPackage {
 	EReference getSchuif_Stockitem();
 
 	/**
+	 * Returns the meta object for the attribute '{@link dp.Schuif#getNummer <em>Nummer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Nummer</em>'.
+	 * @see dp.Schuif#getNummer()
+	 * @see #getSchuif()
+	 * @generated
+	 */
+	EAttribute getSchuif_Nummer();
+
+	/**
 	 * Returns the meta object for class '{@link dp.Produkt <em>Produkt</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -686,6 +706,14 @@ public interface DpPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SCHUIF__STOCKITEM = eINSTANCE.getSchuif_Stockitem();
+
+		/**
+		 * The meta object literal for the '<em><b>Nummer</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCHUIF__NUMMER = eINSTANCE.getSchuif_Nummer();
 
 		/**
 		 * The meta object literal for the '{@link dp.impl.ProduktImpl <em>Produkt</em>}' class.

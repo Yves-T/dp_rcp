@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <ul>
  *   <li>{@link dp.impl.SchuifImpl#getDiepvries <em>Diepvries</em>}</li>
  *   <li>{@link dp.impl.SchuifImpl#getStockitem <em>Stockitem</em>}</li>
+ *   <li>{@link dp.impl.SchuifImpl#getNummer <em>Nummer</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +43,25 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 	 * @ordered
 	 */
 	protected StockItem stockitem;
+
+	/**
+	 * The default value of the '{@link #getNummer() <em>Nummer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNummer()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int NUMMER_EDEFAULT = 0;
+	/**
+	 * The cached value of the '{@link #getNummer() <em>Nummer</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNummer()
+	 * @generated
+	 * @ordered
+	 */
+	protected int nummer = NUMMER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -151,6 +171,27 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getNummer() {
+		return nummer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNummer(int newNummer) {
+		int oldNummer = nummer;
+		nummer = newNummer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DpPackage.SCHUIF__NUMMER, oldNummer, nummer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -208,6 +249,8 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 				return getDiepvries();
 			case DpPackage.SCHUIF__STOCKITEM:
 				return getStockitem();
+			case DpPackage.SCHUIF__NUMMER:
+				return getNummer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,6 +268,9 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 				return;
 			case DpPackage.SCHUIF__STOCKITEM:
 				setStockitem((StockItem)newValue);
+				return;
+			case DpPackage.SCHUIF__NUMMER:
+				setNummer((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -244,6 +290,9 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 			case DpPackage.SCHUIF__STOCKITEM:
 				setStockitem((StockItem)null);
 				return;
+			case DpPackage.SCHUIF__NUMMER:
+				setNummer(NUMMER_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -260,8 +309,26 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 				return getDiepvries() != null;
 			case DpPackage.SCHUIF__STOCKITEM:
 				return stockitem != null;
+			case DpPackage.SCHUIF__NUMMER:
+				return nummer != NUMMER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (nummer: ");
+		result.append(nummer);
+		result.append(')');
+		return result.toString();
 	}
 
 } //SchuifImpl

@@ -49,6 +49,8 @@ public class FillDatabase {
 		//aanmaken van schuiven
 		Schuif schuif1 = factory.createSchuif();
 		Schuif schuif2 = factory.createSchuif();
+		schuif1.setNummer(1);
+		schuif2.setNummer(2);
 		schuifService.create(schuif1);
 		schuifService.create(schuif2);
 

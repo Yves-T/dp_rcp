@@ -281,6 +281,15 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSchuif_Nummer() {
+		return (EAttribute)schuifEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getProdukt() {
 		return produktEClass;
 	}
@@ -360,6 +369,7 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 		schuifEClass = createEClass(SCHUIF);
 		createEReference(schuifEClass, SCHUIF__DIEPVRIES);
 		createEReference(schuifEClass, SCHUIF__STOCKITEM);
+		createEAttribute(schuifEClass, SCHUIF__NUMMER);
 
 		produktEClass = createEClass(PRODUKT);
 		createEReference(produktEClass, PRODUKT__CATEGORIES);
@@ -417,6 +427,7 @@ public class DpPackageImpl extends EPackageImpl implements DpPackage {
 		initEClass(schuifEClass, Schuif.class, "Schuif", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSchuif_Diepvries(), this.getDiepvries(), this.getDiepvries_Schuiven(), "diepvries", null, 0, 1, Schuif.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSchuif_Stockitem(), this.getStockItem(), this.getStockItem_Schuif(), "stockitem", null, 0, 1, Schuif.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSchuif_Nummer(), ecorePackage.getEInt(), "nummer", null, 0, 1, Schuif.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(produktEClass, Produkt.class, "Produkt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getProdukt_Categories(), this.getCategorie(), this.getCategorie_Produkten(), "categories", null, 1, 1, Produkt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

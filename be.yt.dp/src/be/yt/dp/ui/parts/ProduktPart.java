@@ -61,7 +61,7 @@ public class ProduktPart {
 
 	@PostConstruct
 	public void execute(MApplication application, EModelService eModelService,
-            Composite parent, @Named(IServiceConstants.ACTIVE_SHELL) Shell shell) {
+			Composite parent, @Named(IServiceConstants.ACTIVE_SHELL) Shell shell) {
 		this.shell = shell;
 		List<MPart> findElements = eModelService.findElements(application,
 				"be.yt.dp.part.produkt", MPart.class, null);
@@ -107,34 +107,38 @@ public class ProduktPart {
 		gridData.grabExcessVerticalSpace = true;
 		gridData.horizontalAlignment = GridData.FILL;
 		viewer.getControl().setLayoutData(gridData);
-		viewer.getColumnViewerEditor().addEditorActivationListener(new ColumnViewerEditorActivationListener() {
-			
-			@Override
-			public void beforeEditorDeactivated(
-					ColumnViewerEditorDeactivationEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void beforeEditorActivated(ColumnViewerEditorActivationEvent event) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void afterEditorDeactivated(ColumnViewerEditorDeactivationEvent event) {
-				// TODO Auto-generated method stub
-				System.out.println("aftereditor is DE-activated");
-			}
-			
-			@Override
-			public void afterEditorActivated(ColumnViewerEditorActivationEvent event) {
-				// TODO Auto-generated method stub
-				System.out.println("aftereditoractivated");
-				dirty.setDirty(true);
-			}
-		});
+		viewer.getColumnViewerEditor().addEditorActivationListener(
+				new ColumnViewerEditorActivationListener() {
+
+					@Override
+					public void beforeEditorDeactivated(
+							ColumnViewerEditorDeactivationEvent event) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void beforeEditorActivated(
+							ColumnViewerEditorActivationEvent event) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void afterEditorDeactivated(
+							ColumnViewerEditorDeactivationEvent event) {
+						// TODO Auto-generated method stub
+						System.out.println("aftereditor is DE-activated");
+					}
+
+					@Override
+					public void afterEditorActivated(
+							ColumnViewerEditorActivationEvent event) {
+						// TODO Auto-generated method stub
+						System.out.println("aftereditoractivated");
+						dirty.setDirty(true);
+					}
+				});
 
 		// listen to a selection in the table and put the selection in
 		// eSelectionServices
@@ -166,47 +170,47 @@ public class ProduktPart {
 
 	// This will create the columns for the table
 	private void createColums(Composite parent, TableViewer viewer2) {
-		 String[] titles = { "Naam", "Aantal", "Datum" };
-         int[] bounds = { 100, 100, 100 };
+		String[] titles = { "Naam", "Aantal", "Datum" };
+		int[] bounds = { 100, 100, 100 };
 
-         // first column is for the produkt name
-         TableViewerColumn col = createTableViewerColumn(titles[0], bounds[0], 0);
-         col.setLabelProvider(new CellLabelProvider() {
-                 @Override
-                 public void update(ViewerCell cell) {
-                         cell.setText(((StockItem) cell.getElement()).getProdukt()
-                                         .getNaam());
-                 }
-         });
-         col.setEditingSupport(new NameEdittinSupport(viewer2));
+		// first column is for the produkt name
+		TableViewerColumn col = createTableViewerColumn(titles[0], bounds[0], 0);
+		col.setLabelProvider(new CellLabelProvider() {
+			@Override
+			public void update(ViewerCell cell) {
+				cell.setText(((StockItem) cell.getElement()).getProdukt()
+						.getNaam());
+			}
+		});
+		col.setEditingSupport(new NameEdittinSupport(viewer2));
 
-         // second column is for the amount
-         col = createTableViewerColumn(titles[1], bounds[1], 1);
-         col.setLabelProvider(new CellLabelProvider() {
+		// second column is for the amount
+		col = createTableViewerColumn(titles[1], bounds[1], 1);
+		col.setLabelProvider(new CellLabelProvider() {
 
-                 @Override
-                 public void update(ViewerCell cell) {
-                         cell.setText(((StockItem) cell.getElement()).getAantal()
-                                         .toString());
-                 }
+			@Override
+			public void update(ViewerCell cell) {
+				cell.setText(((StockItem) cell.getElement()).getAantal()
+						.toString());
+			}
 
-         });
-         col.setEditingSupport(new AantalEdittingSupport(viewer2));
+		});
+		col.setEditingSupport(new AantalEdittingSupport(viewer2));
 
-         // third column is for the date
-         col = createTableViewerColumn(titles[2], bounds[2], 2);
-         col.setLabelProvider(new CellLabelProvider() {
+		// third column is for the date
+		col = createTableViewerColumn(titles[2], bounds[2], 2);
+		col.setLabelProvider(new CellLabelProvider() {
 
-                 @Override
-                 public void update(ViewerCell cell) {
-                         SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
-                         Date date = ((StockItem) cell.getElement()).getDatum();
-                         String dateToString = sdf.format(date);
-                         cell.setText(dateToString);
-                 }
+			@Override
+			public void update(ViewerCell cell) {
+				SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
+				Date date = ((StockItem) cell.getElement()).getDatum();
+				String dateToString = sdf.format(date);
+				cell.setText(dateToString);
+			}
 
-         });
-         col.setEditingSupport(new DateEdditingSupport(viewer2, shell));
+		});
+		col.setEditingSupport(new DateEdditingSupport(viewer2, shell));
 	}
 
 	private TableViewerColumn createTableViewerColumn(String title, int bound,
@@ -236,32 +240,33 @@ public class ProduktPart {
 	@Inject
 	public void setCategorie(
 			@Optional @Named(IServiceConstants.ACTIVE_SELECTION) Categorie categorie) {
-		
+
 		if (categorie != null) {
-			if(dirty.isDirty())
+			if (dirty.isDirty())
 				save();
-			System.out.println("Inside setCategorie: categorie name = "+categorie.getNaam());
-			
+			System.out.println("Inside setCategorie: categorie name = "
+					+ categorie.getNaam());
+
 			this.selectedCategory = categorie;
 			TableModelProvider.getInstance().setSelectedCategory(categorie);
 			viewer.setInput(selectedCategory.getStockitems());
 			viewer.refresh();
 			System.out.println("categorie name after injection:"
 					+ categorie.getNaam());
-			
+
 		}
 	}
-	
+
 	@Persist
 	public void save() {
 		System.out.println("Saving data");
 		// Save the data
 		// ...
 		// Now set the dirty flag to false
-		for(StockItem s:selectedCategory.getStockitems()) {
+		for (StockItem s : selectedCategory.getStockitems()) {
 			System.out.println("Overzicht van wat gesaved gaat worden:");
-			System.out.println("stockitem aantal"+s.getAantal());
-			System.out.println("Produkt naam : "+s.getProdukt().getNaam());
+			System.out.println("stockitem aantal" + s.getAantal());
+			System.out.println("Produkt naam : " + s.getProdukt().getNaam());
 			System.out.println();
 		}
 		dirty.setDirty(false);

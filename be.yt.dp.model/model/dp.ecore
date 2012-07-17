@@ -29,6 +29,7 @@
         eOpposite="#//Diepvries/schuiven"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stockitem" eType="#//StockItem"
         containment="true" eOpposite="#//StockItem/schuif"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nummer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Produkt">
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" lowerBound="1"
