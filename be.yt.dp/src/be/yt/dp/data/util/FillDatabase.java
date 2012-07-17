@@ -41,8 +41,10 @@ public class FillDatabase {
 		//aanmaken van stockitems
 		StockItem stockItemWitloof = factory.createStockItem();
 		StockItem stockHamburger = factory.createStockItem();
+		StockItem stockWorst = factory.createStockItem();
 		stockService.create(stockItemWitloof);
 		stockService.create(stockHamburger);
+		stockService.create(stockWorst);
 
 		//aanmaken van schuiven
 		Schuif schuif1 = factory.createSchuif();
@@ -58,18 +60,24 @@ public class FillDatabase {
 		categorieService.create(groenten);
 		categorieService.create(vlees);
 
+		// Aanmaken van produkten
 		Produkt hamburger = factory.createProdukt();
 		hamburger.setNaam("hamburger");
 		Produkt witloof = factory.createProdukt();
 		witloof.setNaam("witloof");
+		Produkt worst = factory.createProdukt();
+		worst.setNaam("Worst");
+		worst.setCategories(vlees);
 		hamburger.setCategories(vlees);
 		witloof.setCategories(groenten);
 		produktService.create(hamburger);
 		produktService.create(witloof);
+		produktService.create(worst);
 
 		
 		produktService.update(hamburger);
 		produktService.update(witloof);
+		produktService.update(worst);
 
 		categorieService.update(vlees);
 		categorieService.update(groenten);
@@ -92,15 +100,26 @@ public class FillDatabase {
 		
 		vlees.getStockitems().add(stockHamburger);
 		hamburger.getStockitems().add(stockHamburger);
+		
+		stockWorst.setProdukt(worst);
+		stockWorst.setCategorie(vlees);
+		stockWorst.setDatum(new Date());
+		stockWorst.setAantal(6);
+		stockWorst.setSchuif(schuif2);
+		
+		vlees.getStockitems().add(stockWorst);
+		worst.getStockitems().add(stockWorst);
 
 		produktService.update(witloof);
 		produktService.update(hamburger);
+		produktService.update(worst);
 		categorieService.update(groenten);
 		categorieService.update(vlees);
 		schuifService.update(schuif2);
 		schuifService.update(schuif1);
 
 		stockService.update(stockItemWitloof);
+		stockService.update(stockHamburger);
 		stockService.update(stockHamburger);
 
 		// controle model
