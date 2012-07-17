@@ -23,7 +23,7 @@ public class NameEdittinSupport extends EditingSupport {
 
         @Override
         protected boolean canEdit(Object element) {
-                return true;
+                return false;
         }
 
         @Override
