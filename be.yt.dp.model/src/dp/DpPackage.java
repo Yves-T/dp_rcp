@@ -66,7 +66,7 @@ public interface DpPackage extends EPackage {
 	int STOCK_ITEM = 0;
 
 	/**
-	 * The feature id for the '<em><b>Categorie</b></em>' containment reference.
+	 * The feature id for the '<em><b>Categorie</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -75,16 +75,16 @@ public interface DpPackage extends EPackage {
 	int STOCK_ITEM__CATEGORIE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Produkten</b></em>' containment reference.
+	 * The feature id for the '<em><b>Produkt</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STOCK_ITEM__PRODUKTEN = 1;
+	int STOCK_ITEM__PRODUKT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Schuif</b></em>' containment reference.
+	 * The feature id for the '<em><b>Schuif</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -139,13 +139,13 @@ public interface DpPackage extends EPackage {
 	int CATEGORIE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Stockitem</b></em>' container reference.
+	 * The feature id for the '<em><b>Stockitems</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORIE__STOCKITEM = 0;
+	int CATEGORIE__STOCKITEMS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Naam</b></em>' attribute.
@@ -157,7 +157,7 @@ public interface DpPackage extends EPackage {
 	int CATEGORIE__NAAM = 1;
 
 	/**
-	 * The feature id for the '<em><b>Produkten</b></em>' reference list.
+	 * The feature id for the '<em><b>Produkten</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -231,7 +231,7 @@ public interface DpPackage extends EPackage {
 	int SCHUIF__DIEPVRIES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Stockitem</b></em>' container reference.
+	 * The feature id for the '<em><b>Stockitem</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -259,7 +259,7 @@ public interface DpPackage extends EPackage {
 	int PRODUKT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Categories</b></em>' reference.
+	 * The feature id for the '<em><b>Categories</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -268,13 +268,13 @@ public interface DpPackage extends EPackage {
 	int PRODUKT__CATEGORIES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Stockitem</b></em>' container reference.
+	 * The feature id for the '<em><b>Stockitems</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUKT__STOCKITEM = 1;
+	int PRODUKT__STOCKITEMS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Naam</b></em>' attribute.
@@ -306,10 +306,10 @@ public interface DpPackage extends EPackage {
 	EClass getStockItem();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dp.StockItem#getCategorie <em>Categorie</em>}'.
+	 * Returns the meta object for the container reference '{@link dp.StockItem#getCategorie <em>Categorie</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Categorie</em>'.
+	 * @return the meta object for the container reference '<em>Categorie</em>'.
 	 * @see dp.StockItem#getCategorie()
 	 * @see #getStockItem()
 	 * @generated
@@ -317,21 +317,21 @@ public interface DpPackage extends EPackage {
 	EReference getStockItem_Categorie();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dp.StockItem#getProdukten <em>Produkten</em>}'.
+	 * Returns the meta object for the reference '{@link dp.StockItem#getProdukt <em>Produkt</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Produkten</em>'.
-	 * @see dp.StockItem#getProdukten()
+	 * @return the meta object for the reference '<em>Produkt</em>'.
+	 * @see dp.StockItem#getProdukt()
 	 * @see #getStockItem()
 	 * @generated
 	 */
-	EReference getStockItem_Produkten();
+	EReference getStockItem_Produkt();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link dp.StockItem#getSchuif <em>Schuif</em>}'.
+	 * Returns the meta object for the container reference '{@link dp.StockItem#getSchuif <em>Schuif</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Schuif</em>'.
+	 * @return the meta object for the container reference '<em>Schuif</em>'.
 	 * @see dp.StockItem#getSchuif()
 	 * @see #getStockItem()
 	 * @generated
@@ -382,21 +382,21 @@ public interface DpPackage extends EPackage {
 	EClass getCategorie();
 
 	/**
-	 * Returns the meta object for the container reference '{@link dp.Categorie#getStockitem <em>Stockitem</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dp.Categorie#getStockitems <em>Stockitems</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Stockitem</em>'.
-	 * @see dp.Categorie#getStockitem()
+	 * @return the meta object for the containment reference list '<em>Stockitems</em>'.
+	 * @see dp.Categorie#getStockitems()
 	 * @see #getCategorie()
 	 * @generated
 	 */
-	EReference getCategorie_Stockitem();
+	EReference getCategorie_Stockitems();
 
 	/**
-	 * Returns the meta object for the reference list '{@link dp.Categorie#getProdukten <em>Produkten</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dp.Categorie#getProdukten <em>Produkten</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Produkten</em>'.
+	 * @return the meta object for the containment reference list '<em>Produkten</em>'.
 	 * @see dp.Categorie#getProdukten()
 	 * @see #getCategorie()
 	 * @generated
@@ -468,10 +468,10 @@ public interface DpPackage extends EPackage {
 	EReference getSchuif_Diepvries();
 
 	/**
-	 * Returns the meta object for the container reference '{@link dp.Schuif#getStockitem <em>Stockitem</em>}'.
+	 * Returns the meta object for the containment reference '{@link dp.Schuif#getStockitem <em>Stockitem</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Stockitem</em>'.
+	 * @return the meta object for the containment reference '<em>Stockitem</em>'.
 	 * @see dp.Schuif#getStockitem()
 	 * @see #getSchuif()
 	 * @generated
@@ -489,10 +489,10 @@ public interface DpPackage extends EPackage {
 	EClass getProdukt();
 
 	/**
-	 * Returns the meta object for the reference '{@link dp.Produkt#getCategories <em>Categories</em>}'.
+	 * Returns the meta object for the container reference '{@link dp.Produkt#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Categories</em>'.
+	 * @return the meta object for the container reference '<em>Categories</em>'.
 	 * @see dp.Produkt#getCategories()
 	 * @see #getProdukt()
 	 * @generated
@@ -500,15 +500,15 @@ public interface DpPackage extends EPackage {
 	EReference getProdukt_Categories();
 
 	/**
-	 * Returns the meta object for the container reference '{@link dp.Produkt#getStockitem <em>Stockitem</em>}'.
+	 * Returns the meta object for the reference list '{@link dp.Produkt#getStockitems <em>Stockitems</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Stockitem</em>'.
-	 * @see dp.Produkt#getStockitem()
+	 * @return the meta object for the reference list '<em>Stockitems</em>'.
+	 * @see dp.Produkt#getStockitems()
 	 * @see #getProdukt()
 	 * @generated
 	 */
-	EReference getProdukt_Stockitem();
+	EReference getProdukt_Stockitems();
 
 	/**
 	 * Returns the meta object for the attribute '{@link dp.Produkt#getNaam <em>Naam</em>}'.
@@ -554,7 +554,7 @@ public interface DpPackage extends EPackage {
 		EClass STOCK_ITEM = eINSTANCE.getStockItem();
 
 		/**
-		 * The meta object literal for the '<em><b>Categorie</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Categorie</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -562,15 +562,15 @@ public interface DpPackage extends EPackage {
 		EReference STOCK_ITEM__CATEGORIE = eINSTANCE.getStockItem_Categorie();
 
 		/**
-		 * The meta object literal for the '<em><b>Produkten</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Produkt</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STOCK_ITEM__PRODUKTEN = eINSTANCE.getStockItem_Produkten();
+		EReference STOCK_ITEM__PRODUKT = eINSTANCE.getStockItem_Produkt();
 
 		/**
-		 * The meta object literal for the '<em><b>Schuif</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Schuif</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -612,15 +612,15 @@ public interface DpPackage extends EPackage {
 		EClass CATEGORIE = eINSTANCE.getCategorie();
 
 		/**
-		 * The meta object literal for the '<em><b>Stockitem</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Stockitems</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CATEGORIE__STOCKITEM = eINSTANCE.getCategorie_Stockitem();
+		EReference CATEGORIE__STOCKITEMS = eINSTANCE.getCategorie_Stockitems();
 
 		/**
-		 * The meta object literal for the '<em><b>Produkten</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Produkten</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -680,7 +680,7 @@ public interface DpPackage extends EPackage {
 		EReference SCHUIF__DIEPVRIES = eINSTANCE.getSchuif_Diepvries();
 
 		/**
-		 * The meta object literal for the '<em><b>Stockitem</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Stockitem</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -698,7 +698,7 @@ public interface DpPackage extends EPackage {
 		EClass PRODUKT = eINSTANCE.getProdukt();
 
 		/**
-		 * The meta object literal for the '<em><b>Categories</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Categories</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -706,12 +706,12 @@ public interface DpPackage extends EPackage {
 		EReference PRODUKT__CATEGORIES = eINSTANCE.getProdukt_Categories();
 
 		/**
-		 * The meta object literal for the '<em><b>Stockitem</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Stockitems</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PRODUKT__STOCKITEM = eINSTANCE.getProdukt_Stockitem();
+		EReference PRODUKT__STOCKITEMS = eINSTANCE.getProdukt_Stockitems();
 
 		/**
 		 * The meta object literal for the '<em><b>Naam</b></em>' attribute feature.

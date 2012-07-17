@@ -4,6 +4,7 @@ package dp.impl;
 
 import dp.Categorie;
 import dp.DpPackage;
+import dp.MyInterface;
 import dp.Produkt;
 import dp.Schuif;
 import dp.StockItem;
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +29,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link dp.impl.StockItemImpl#getCategorie <em>Categorie</em>}</li>
- *   <li>{@link dp.impl.StockItemImpl#getProdukten <em>Produkten</em>}</li>
+ *   <li>{@link dp.impl.StockItemImpl#getProdukt <em>Produkt</em>}</li>
  *   <li>{@link dp.impl.StockItemImpl#getSchuif <em>Schuif</em>}</li>
  *   <li>{@link dp.impl.StockItemImpl#getAantal <em>Aantal</em>}</li>
  *   <li>{@link dp.impl.StockItemImpl#getDatum <em>Datum</em>}</li>
@@ -39,34 +41,14 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class StockItemImpl extends EObjectImpl implements StockItem {
 	/**
-	 * The cached value of the '{@link #getCategorie() <em>Categorie</em>}' containment reference.
+	 * The cached value of the '{@link #getProdukt() <em>Produkt</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCategorie()
+	 * @see #getProdukt()
 	 * @generated
 	 * @ordered
 	 */
-	protected Categorie categorie;
-
-	/**
-	 * The cached value of the '{@link #getProdukten() <em>Produkten</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProdukten()
-	 * @generated
-	 * @ordered
-	 */
-	protected Produkt produkten;
-
-	/**
-	 * The cached value of the '{@link #getSchuif() <em>Schuif</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSchuif()
-	 * @generated
-	 * @ordered
-	 */
-	protected Schuif schuif;
+	protected Produkt produkt;
 
 	/**
 	 * The default value of the '{@link #getAantal() <em>Aantal</em>}' attribute.
@@ -153,7 +135,8 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * @generated
 	 */
 	public Categorie getCategorie() {
-		return categorie;
+		if (eContainerFeatureID() != DpPackage.STOCK_ITEM__CATEGORIE) return null;
+		return (Categorie)eContainer();
 	}
 
 	/**
@@ -162,12 +145,7 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * @generated
 	 */
 	public NotificationChain basicSetCategorie(Categorie newCategorie, NotificationChain msgs) {
-		Categorie oldCategorie = categorie;
-		categorie = newCategorie;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DpPackage.STOCK_ITEM__CATEGORIE, oldCategorie, newCategorie);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject)newCategorie, DpPackage.STOCK_ITEM__CATEGORIE, msgs);
 		return msgs;
 	}
 
@@ -177,12 +155,14 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * @generated
 	 */
 	public void setCategorie(Categorie newCategorie) {
-		if (newCategorie != categorie) {
+		if (newCategorie != eInternalContainer() || (eContainerFeatureID() != DpPackage.STOCK_ITEM__CATEGORIE && newCategorie != null)) {
+			if (EcoreUtil.isAncestor(this, newCategorie))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (categorie != null)
-				msgs = ((InternalEObject)categorie).eInverseRemove(this, DpPackage.CATEGORIE__STOCKITEM, Categorie.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newCategorie != null)
-				msgs = ((InternalEObject)newCategorie).eInverseAdd(this, DpPackage.CATEGORIE__STOCKITEM, Categorie.class, msgs);
+				msgs = ((InternalEObject)newCategorie).eInverseAdd(this, DpPackage.CATEGORIE__STOCKITEMS, Categorie.class, msgs);
 			msgs = basicSetCategorie(newCategorie, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -195,8 +175,16 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Produkt getProdukten() {
-		return produkten;
+	public Produkt getProdukt() {
+		if (produkt != null && produkt.eIsProxy()) {
+			InternalEObject oldProdukt = (InternalEObject)produkt;
+			produkt = (Produkt)eResolveProxy(oldProdukt);
+			if (produkt != oldProdukt) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DpPackage.STOCK_ITEM__PRODUKT, oldProdukt, produkt));
+			}
+		}
+		return produkt;
 	}
 
 	/**
@@ -204,11 +192,20 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetProdukten(Produkt newProdukten, NotificationChain msgs) {
-		Produkt oldProdukten = produkten;
-		produkten = newProdukten;
+	public Produkt basicGetProdukt() {
+		return produkt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetProdukt(Produkt newProdukt, NotificationChain msgs) {
+		Produkt oldProdukt = produkt;
+		produkt = newProdukt;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DpPackage.STOCK_ITEM__PRODUKTEN, oldProdukten, newProdukten);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DpPackage.STOCK_ITEM__PRODUKT, oldProdukt, newProdukt);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -219,18 +216,18 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProdukten(Produkt newProdukten) {
-		if (newProdukten != produkten) {
+	public void setProdukt(Produkt newProdukt) {
+		if (newProdukt != produkt) {
 			NotificationChain msgs = null;
-			if (produkten != null)
-				msgs = ((InternalEObject)produkten).eInverseRemove(this, DpPackage.PRODUKT__STOCKITEM, Produkt.class, msgs);
-			if (newProdukten != null)
-				msgs = ((InternalEObject)newProdukten).eInverseAdd(this, DpPackage.PRODUKT__STOCKITEM, Produkt.class, msgs);
-			msgs = basicSetProdukten(newProdukten, msgs);
+			if (produkt != null)
+				msgs = ((InternalEObject)produkt).eInverseRemove(this, DpPackage.PRODUKT__STOCKITEMS, Produkt.class, msgs);
+			if (newProdukt != null)
+				msgs = ((InternalEObject)newProdukt).eInverseAdd(this, DpPackage.PRODUKT__STOCKITEMS, Produkt.class, msgs);
+			msgs = basicSetProdukt(newProdukt, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DpPackage.STOCK_ITEM__PRODUKTEN, newProdukten, newProdukten));
+			eNotify(new ENotificationImpl(this, Notification.SET, DpPackage.STOCK_ITEM__PRODUKT, newProdukt, newProdukt));
 	}
 
 	/**
@@ -239,7 +236,8 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * @generated
 	 */
 	public Schuif getSchuif() {
-		return schuif;
+		if (eContainerFeatureID() != DpPackage.STOCK_ITEM__SCHUIF) return null;
+		return (Schuif)eContainer();
 	}
 
 	/**
@@ -248,12 +246,7 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * @generated
 	 */
 	public NotificationChain basicSetSchuif(Schuif newSchuif, NotificationChain msgs) {
-		Schuif oldSchuif = schuif;
-		schuif = newSchuif;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DpPackage.STOCK_ITEM__SCHUIF, oldSchuif, newSchuif);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject)newSchuif, DpPackage.STOCK_ITEM__SCHUIF, msgs);
 		return msgs;
 	}
 
@@ -263,10 +256,12 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * @generated
 	 */
 	public void setSchuif(Schuif newSchuif) {
-		if (newSchuif != schuif) {
+		if (newSchuif != eInternalContainer() || (eContainerFeatureID() != DpPackage.STOCK_ITEM__SCHUIF && newSchuif != null)) {
+			if (EcoreUtil.isAncestor(this, newSchuif))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (schuif != null)
-				msgs = ((InternalEObject)schuif).eInverseRemove(this, DpPackage.SCHUIF__STOCKITEM, Schuif.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSchuif != null)
 				msgs = ((InternalEObject)newSchuif).eInverseAdd(this, DpPackage.SCHUIF__STOCKITEM, Schuif.class, msgs);
 			msgs = basicSetSchuif(newSchuif, msgs);
@@ -348,16 +343,16 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case DpPackage.STOCK_ITEM__CATEGORIE:
-				if (categorie != null)
-					msgs = ((InternalEObject)categorie).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DpPackage.STOCK_ITEM__CATEGORIE, null, msgs);
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetCategorie((Categorie)otherEnd, msgs);
-			case DpPackage.STOCK_ITEM__PRODUKTEN:
-				if (produkten != null)
-					msgs = ((InternalEObject)produkten).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DpPackage.STOCK_ITEM__PRODUKTEN, null, msgs);
-				return basicSetProdukten((Produkt)otherEnd, msgs);
+			case DpPackage.STOCK_ITEM__PRODUKT:
+				if (produkt != null)
+					msgs = ((InternalEObject)produkt).eInverseRemove(this, DpPackage.PRODUKT__STOCKITEMS, Produkt.class, msgs);
+				return basicSetProdukt((Produkt)otherEnd, msgs);
 			case DpPackage.STOCK_ITEM__SCHUIF:
-				if (schuif != null)
-					msgs = ((InternalEObject)schuif).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DpPackage.STOCK_ITEM__SCHUIF, null, msgs);
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetSchuif((Schuif)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -373,8 +368,8 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 		switch (featureID) {
 			case DpPackage.STOCK_ITEM__CATEGORIE:
 				return basicSetCategorie(null, msgs);
-			case DpPackage.STOCK_ITEM__PRODUKTEN:
-				return basicSetProdukten(null, msgs);
+			case DpPackage.STOCK_ITEM__PRODUKT:
+				return basicSetProdukt(null, msgs);
 			case DpPackage.STOCK_ITEM__SCHUIF:
 				return basicSetSchuif(null, msgs);
 		}
@@ -387,12 +382,29 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case DpPackage.STOCK_ITEM__CATEGORIE:
+				return eInternalContainer().eInverseRemove(this, DpPackage.CATEGORIE__STOCKITEMS, Categorie.class, msgs);
+			case DpPackage.STOCK_ITEM__SCHUIF:
+				return eInternalContainer().eInverseRemove(this, DpPackage.SCHUIF__STOCKITEM, Schuif.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DpPackage.STOCK_ITEM__CATEGORIE:
 				return getCategorie();
-			case DpPackage.STOCK_ITEM__PRODUKTEN:
-				return getProdukten();
+			case DpPackage.STOCK_ITEM__PRODUKT:
+				if (resolve) return getProdukt();
+				return basicGetProdukt();
 			case DpPackage.STOCK_ITEM__SCHUIF:
 				return getSchuif();
 			case DpPackage.STOCK_ITEM__AANTAL:
@@ -416,8 +428,8 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 			case DpPackage.STOCK_ITEM__CATEGORIE:
 				setCategorie((Categorie)newValue);
 				return;
-			case DpPackage.STOCK_ITEM__PRODUKTEN:
-				setProdukten((Produkt)newValue);
+			case DpPackage.STOCK_ITEM__PRODUKT:
+				setProdukt((Produkt)newValue);
 				return;
 			case DpPackage.STOCK_ITEM__SCHUIF:
 				setSchuif((Schuif)newValue);
@@ -446,8 +458,8 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 			case DpPackage.STOCK_ITEM__CATEGORIE:
 				setCategorie((Categorie)null);
 				return;
-			case DpPackage.STOCK_ITEM__PRODUKTEN:
-				setProdukten((Produkt)null);
+			case DpPackage.STOCK_ITEM__PRODUKT:
+				setProdukt((Produkt)null);
 				return;
 			case DpPackage.STOCK_ITEM__SCHUIF:
 				setSchuif((Schuif)null);
@@ -474,11 +486,11 @@ public class StockItemImpl extends EObjectImpl implements StockItem {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case DpPackage.STOCK_ITEM__CATEGORIE:
-				return categorie != null;
-			case DpPackage.STOCK_ITEM__PRODUKTEN:
-				return produkten != null;
+				return getCategorie() != null;
+			case DpPackage.STOCK_ITEM__PRODUKT:
+				return produkt != null;
 			case DpPackage.STOCK_ITEM__SCHUIF:
-				return schuif != null;
+				return getSchuif() != null;
 			case DpPackage.STOCK_ITEM__AANTAL:
 				return AANTAL_EDEFAULT == null ? aantal != null : !AANTAL_EDEFAULT.equals(aantal);
 			case DpPackage.STOCK_ITEM__DATUM:

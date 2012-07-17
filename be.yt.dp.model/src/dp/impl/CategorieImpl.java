@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link dp.impl.CategorieImpl#getStockitem <em>Stockitem</em>}</li>
+ *   <li>{@link dp.impl.CategorieImpl#getStockitems <em>Stockitems</em>}</li>
  *   <li>{@link dp.impl.CategorieImpl#getNaam <em>Naam</em>}</li>
  *   <li>{@link dp.impl.CategorieImpl#getProdukten <em>Produkten</em>}</li>
  * </ul>
@@ -40,6 +40,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class CategorieImpl extends EObjectImpl implements Categorie {
+	/**
+	 * The cached value of the '{@link #getStockitems() <em>Stockitems</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStockitems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<StockItem> stockitems;
+
 	/**
 	 * The default value of the '{@link #getNaam() <em>Naam</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -61,7 +71,7 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	protected String naam = NAAM_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getProdukten() <em>Produkten</em>}' reference list.
+	 * The cached value of the '{@link #getProdukten() <em>Produkten</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProdukten()
@@ -94,40 +104,11 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StockItem getStockitem() {
-		if (eContainerFeatureID() != DpPackage.CATEGORIE__STOCKITEM) return null;
-		return (StockItem)eContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetStockitem(StockItem newStockitem, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newStockitem, DpPackage.CATEGORIE__STOCKITEM, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStockitem(StockItem newStockitem) {
-		if (newStockitem != eInternalContainer() || (eContainerFeatureID() != DpPackage.CATEGORIE__STOCKITEM && newStockitem != null)) {
-			if (EcoreUtil.isAncestor(this, newStockitem))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newStockitem != null)
-				msgs = ((InternalEObject)newStockitem).eInverseAdd(this, DpPackage.STOCK_ITEM__CATEGORIE, StockItem.class, msgs);
-			msgs = basicSetStockitem(newStockitem, msgs);
-			if (msgs != null) msgs.dispatch();
+	public EList<StockItem> getStockitems() {
+		if (stockitems == null) {
+			stockitems = new EObjectContainmentWithInverseEList<StockItem>(StockItem.class, this, DpPackage.CATEGORIE__STOCKITEMS, DpPackage.STOCK_ITEM__CATEGORIE);
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DpPackage.CATEGORIE__STOCKITEM, newStockitem, newStockitem));
+		return stockitems;
 	}
 
 	/**
@@ -137,7 +118,7 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	 */
 	public EList<Produkt> getProdukten() {
 		if (produkten == null) {
-			produkten = new EObjectWithInverseResolvingEList<Produkt>(Produkt.class, this, DpPackage.CATEGORIE__PRODUKTEN, DpPackage.PRODUKT__CATEGORIES);
+			produkten = new EObjectContainmentWithInverseEList<Produkt>(Produkt.class, this, DpPackage.CATEGORIE__PRODUKTEN, DpPackage.PRODUKT__CATEGORIES);
 		}
 		return produkten;
 	}
@@ -172,10 +153,8 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DpPackage.CATEGORIE__STOCKITEM:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetStockitem((StockItem)otherEnd, msgs);
+			case DpPackage.CATEGORIE__STOCKITEMS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getStockitems()).basicAdd(otherEnd, msgs);
 			case DpPackage.CATEGORIE__PRODUKTEN:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getProdukten()).basicAdd(otherEnd, msgs);
 		}
@@ -190,8 +169,8 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DpPackage.CATEGORIE__STOCKITEM:
-				return basicSetStockitem(null, msgs);
+			case DpPackage.CATEGORIE__STOCKITEMS:
+				return ((InternalEList<?>)getStockitems()).basicRemove(otherEnd, msgs);
 			case DpPackage.CATEGORIE__PRODUKTEN:
 				return ((InternalEList<?>)getProdukten()).basicRemove(otherEnd, msgs);
 		}
@@ -204,24 +183,10 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case DpPackage.CATEGORIE__STOCKITEM:
-				return eInternalContainer().eInverseRemove(this, DpPackage.STOCK_ITEM__CATEGORIE, StockItem.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DpPackage.CATEGORIE__STOCKITEM:
-				return getStockitem();
+			case DpPackage.CATEGORIE__STOCKITEMS:
+				return getStockitems();
 			case DpPackage.CATEGORIE__NAAM:
 				return getNaam();
 			case DpPackage.CATEGORIE__PRODUKTEN:
@@ -239,8 +204,9 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DpPackage.CATEGORIE__STOCKITEM:
-				setStockitem((StockItem)newValue);
+			case DpPackage.CATEGORIE__STOCKITEMS:
+				getStockitems().clear();
+				getStockitems().addAll((Collection<? extends StockItem>)newValue);
 				return;
 			case DpPackage.CATEGORIE__NAAM:
 				setNaam((String)newValue);
@@ -261,8 +227,8 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DpPackage.CATEGORIE__STOCKITEM:
-				setStockitem((StockItem)null);
+			case DpPackage.CATEGORIE__STOCKITEMS:
+				getStockitems().clear();
 				return;
 			case DpPackage.CATEGORIE__NAAM:
 				setNaam(NAAM_EDEFAULT);
@@ -282,8 +248,8 @@ public class CategorieImpl extends EObjectImpl implements Categorie {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DpPackage.CATEGORIE__STOCKITEM:
-				return getStockitem() != null;
+			case DpPackage.CATEGORIE__STOCKITEMS:
+				return stockitems != null && !stockitems.isEmpty();
 			case DpPackage.CATEGORIE__NAAM:
 				return NAAM_EDEFAULT == null ? naam != null : !NAAM_EDEFAULT.equals(naam);
 			case DpPackage.CATEGORIE__PRODUKTEN:

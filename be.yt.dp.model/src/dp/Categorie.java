@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link dp.Categorie#getStockitem <em>Stockitem</em>}</li>
+ *   <li>{@link dp.Categorie#getStockitems <em>Stockitems</em>}</li>
  *   <li>{@link dp.Categorie#getNaam <em>Naam</em>}</li>
  *   <li>{@link dp.Categorie#getProdukten <em>Produkten</em>}</li>
  * </ul>
@@ -25,35 +25,25 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Categorie extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Stockitem</b></em>' container reference.
+	 * Returns the value of the '<em><b>Stockitems</b></em>' containment reference list.
+	 * The list contents are of type {@link dp.StockItem}.
 	 * It is bidirectional and its opposite is '{@link dp.StockItem#getCategorie <em>Categorie</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Stockitem</em>' container reference isn't clear,
+	 * If the meaning of the '<em>Stockitems</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stockitem</em>' container reference.
-	 * @see #setStockitem(StockItem)
-	 * @see dp.DpPackage#getCategorie_Stockitem()
+	 * @return the value of the '<em>Stockitems</em>' containment reference list.
+	 * @see dp.DpPackage#getCategorie_Stockitems()
 	 * @see dp.StockItem#getCategorie
-	 * @model opposite="categorie" transient="false"
+	 * @model opposite="categorie" containment="true"
 	 * @generated
 	 */
-	StockItem getStockitem();
+	EList<StockItem> getStockitems();
 
 	/**
-	 * Sets the value of the '{@link dp.Categorie#getStockitem <em>Stockitem</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Stockitem</em>' container reference.
-	 * @see #getStockitem()
-	 * @generated
-	 */
-	void setStockitem(StockItem value);
-
-	/**
-	 * Returns the value of the '<em><b>Produkten</b></em>' reference list.
+	 * Returns the value of the '<em><b>Produkten</b></em>' containment reference list.
 	 * The list contents are of type {@link dp.Produkt}.
 	 * It is bidirectional and its opposite is '{@link dp.Produkt#getCategories <em>Categories</em>}'.
 	 * <!-- begin-user-doc -->
@@ -62,10 +52,10 @@ public interface Categorie extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Produkten</em>' reference list.
+	 * @return the value of the '<em>Produkten</em>' containment reference list.
 	 * @see dp.DpPackage#getCategorie_Produkten()
 	 * @see dp.Produkt#getCategories
-	 * @model opposite="categories"
+	 * @model opposite="categories" containment="true"
 	 * @generated
 	 */
 	EList<Produkt> getProdukten();

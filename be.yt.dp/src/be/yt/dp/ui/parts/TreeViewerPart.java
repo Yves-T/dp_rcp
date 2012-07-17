@@ -7,6 +7,7 @@ import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -45,6 +46,7 @@ public class TreeViewerPart implements Observer {
 		// expand the tree
 		viewer.setAutoExpandLevel(2);
 		viewer.setInput(categorieModel);
+		
 		// set listener to tree
 		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -74,6 +76,8 @@ public class TreeViewerPart implements Observer {
 		categorieModel.registerObserver(this);
 		// provide the input to the ContentProvider
 		viewer.setInput(categorieModel);
+		StructuredSelection selection = new StructuredSelection(categorieModel.getCategories().get(0));
+		viewer.setSelection(selection,true);
 
 		// popup test
 		final Text text = new Text(parent, SWT.BORDER);

@@ -58,7 +58,7 @@ public class StockItemServiceImpl implements StockItemService {
 			List<StockItem> stockList = stockItemDAO
 					.findStockItemsPerCategorie(catNr);
 			for (StockItem stockitem : stockList) {
-				stockitem.getProdukten().getNaam();
+				stockitem.getProdukt().getNaam();
 			}
 			stockItemDAO.commit();
 			return stockList;
@@ -80,7 +80,7 @@ public class StockItemServiceImpl implements StockItemService {
 			stockItemDAO.beginTransaction();
 			items = stockItemDAO.findStockItemsPerCategorie(naam);
 			for (StockItem stockitem : items) {
-				stockitem.getProdukten().getNaam();
+				stockitem.getProdukt().getNaam();
 			}
 			stockItemDAO.commit();
 			return items;

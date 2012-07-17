@@ -51,7 +51,7 @@ public interface Schuif extends EObject {
 	void setDiepvries(Diepvries value);
 
 	/**
-	 * Returns the value of the '<em><b>Stockitem</b></em>' container reference.
+	 * Returns the value of the '<em><b>Stockitem</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link dp.StockItem#getSchuif <em>Schuif</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -59,20 +59,20 @@ public interface Schuif extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Stockitem</em>' container reference.
+	 * @return the value of the '<em>Stockitem</em>' containment reference.
 	 * @see #setStockitem(StockItem)
 	 * @see dp.DpPackage#getSchuif_Stockitem()
 	 * @see dp.StockItem#getSchuif
-	 * @model opposite="schuif" transient="false"
+	 * @model opposite="schuif" containment="true"
 	 * @generated
 	 */
 	StockItem getStockitem();
 
 	/**
-	 * Sets the value of the '{@link dp.Schuif#getStockitem <em>Stockitem</em>}' container reference.
+	 * Sets the value of the '{@link dp.Schuif#getStockitem <em>Stockitem</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Stockitem</em>' container reference.
+	 * @param value the new value of the '<em>Stockitem</em>' containment reference.
 	 * @see #getStockitem()
 	 * @generated
 	 */

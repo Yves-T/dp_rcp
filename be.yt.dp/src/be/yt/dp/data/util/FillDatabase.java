@@ -1,5 +1,7 @@
 package be.yt.dp.data.util;
 
+import java.util.Date;
+
 import dp.Categorie;
 import dp.DpFactory;
 import dp.Produkt;
@@ -72,15 +74,24 @@ public class FillDatabase {
 		categorieService.update(vlees);
 		categorieService.update(groenten);
 
-		stockItemWitloof.setProdukten(witloof);
+		stockItemWitloof.setProdukt(witloof);
 		stockItemWitloof.setCategorie(groenten);
 		stockItemWitloof.setAantal(5);
+		stockItemWitloof.setDatum(new Date());
 		stockItemWitloof.setSchuif(schuif1);
+		
+		groenten.getStockitems().add(stockItemWitloof);
+		witloof.getStockitems().add(stockItemWitloof);
+		
 
-		stockHamburger.setProdukten(hamburger);
+		stockHamburger.setProdukt(hamburger);
 		stockHamburger.setCategorie(vlees);
+		stockHamburger.setDatum(new Date());
 		stockHamburger.setAantal(3);
 		stockHamburger.setSchuif(schuif2);
+		
+		vlees.getStockitems().add(stockHamburger);
+		hamburger.getStockitems().add(stockHamburger);
 
 		produktService.update(witloof);
 		produktService.update(hamburger);
@@ -97,6 +108,10 @@ public class FillDatabase {
 		System.out.println("Categorie groenten heeft volgende produkten");
 		for (Produkt p : groenten.getProdukten()) {
 			System.out.println(p.getNaam());
+		}
+		
+		for (StockItem s:groenten.getStockitems()) {
+			System.out.println("Aantal van stockItem van groenten : "+s.getAantal());
 		}
 
 		System.out.println("Een hamburger heeft als categorie :"

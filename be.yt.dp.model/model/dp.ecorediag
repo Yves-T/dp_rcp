@@ -143,7 +143,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_sP5Pgcy8EeGP-LqWV-kcbg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_sP5Pgsy8EeGP-LqWV-kcbg" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="dp.ecore#//StockItem/produkten"/>
+    <element xmi:type="ecore:EReference" href="dp.ecore#//StockItem/produkt"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_sP5Pg8y8EeGP-LqWV-kcbg" points="[50, -16, -163, 43]$[215, -79, 2, -20]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0mvJMMy9EeGP-LqWV-kcbg" id="(0.5,0.5)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0mvJMcy9EeGP-LqWV-kcbg" id="(0.5,0.5)"/>
@@ -185,7 +185,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_uqw6Acy9EeGP-LqWV-kcbg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_uqw6Asy9EeGP-LqWV-kcbg" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="dp.ecore#//Produkt/stockitem"/>
+    <element xmi:type="ecore:EReference" href="dp.ecore#//Produkt/stockitems"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_uqw6A8y9EeGP-LqWV-kcbg" points="[2, -20, 215, -79]$[-163, 43, 50, -16]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0mwXUMy9EeGP-LqWV-kcbg" id="(0.5,0.5)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0mwXUcy9EeGP-LqWV-kcbg" id="(0.5,0.5)"/>
@@ -213,7 +213,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_-OHTIcy9EeGP-LqWV-kcbg" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_-OH6MMy9EeGP-LqWV-kcbg" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="dp.ecore#//Categorie/stockitem"/>
+    <element xmi:type="ecore:EReference" href="dp.ecore#//Categorie/stockitems"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-OH6Mcy9EeGP-LqWV-kcbg" points="[1, 21, -9, -203]$[12, 245, 2, 21]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CoGyMMy-EeGP-LqWV-kcbg" id="(0.5,0.5)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CoGyMcy-EeGP-LqWV-kcbg" id="(0.5,0.5)"/>

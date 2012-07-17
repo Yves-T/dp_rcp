@@ -45,7 +45,7 @@ public class TableModelProvider implements Subject {
 			StockItem stockitem =factory.createStockItem();
 			Produkt produkt = factory.createProdukt();
 			produkt.setNaam("empty");
-			stockitem.setProdukten(produkt);
+			stockitem.setProdukt(produkt);
 			List<StockItem>list = new ArrayList<StockItem>();
 			list.add(stockitem);
 			return list;
@@ -56,7 +56,7 @@ public class TableModelProvider implements Subject {
 		if (stockList != null) {
 			for (StockItem stockitem : stockList) {
 				System.out.println("produkt name in stocklist="
-						+ stockitem.getProdukten().getNaam());
+						+ stockitem.getProdukt().getNaam());
 			}
 		}
 		

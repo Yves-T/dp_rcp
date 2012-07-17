@@ -34,6 +34,16 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  */
 public class SchuifImpl extends EObjectImpl implements Schuif {
 	/**
+	 * The cached value of the '{@link #getStockitem() <em>Stockitem</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStockitem()
+	 * @generated
+	 * @ordered
+	 */
+	protected StockItem stockitem;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -99,8 +109,7 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 	 * @generated
 	 */
 	public StockItem getStockitem() {
-		if (eContainerFeatureID() != DpPackage.SCHUIF__STOCKITEM) return null;
-		return (StockItem)eContainer();
+		return stockitem;
 	}
 
 	/**
@@ -109,7 +118,12 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 	 * @generated
 	 */
 	public NotificationChain basicSetStockitem(StockItem newStockitem, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newStockitem, DpPackage.SCHUIF__STOCKITEM, msgs);
+		StockItem oldStockitem = stockitem;
+		stockitem = newStockitem;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DpPackage.SCHUIF__STOCKITEM, oldStockitem, newStockitem);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -119,12 +133,10 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 	 * @generated
 	 */
 	public void setStockitem(StockItem newStockitem) {
-		if (newStockitem != eInternalContainer() || (eContainerFeatureID() != DpPackage.SCHUIF__STOCKITEM && newStockitem != null)) {
-			if (EcoreUtil.isAncestor(this, newStockitem))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+		if (newStockitem != stockitem) {
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
+			if (stockitem != null)
+				msgs = ((InternalEObject)stockitem).eInverseRemove(this, DpPackage.STOCK_ITEM__SCHUIF, StockItem.class, msgs);
 			if (newStockitem != null)
 				msgs = ((InternalEObject)newStockitem).eInverseAdd(this, DpPackage.STOCK_ITEM__SCHUIF, StockItem.class, msgs);
 			msgs = basicSetStockitem(newStockitem, msgs);
@@ -147,8 +159,8 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetDiepvries((Diepvries)otherEnd, msgs);
 			case DpPackage.SCHUIF__STOCKITEM:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
+				if (stockitem != null)
+					msgs = ((InternalEObject)stockitem).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DpPackage.SCHUIF__STOCKITEM, null, msgs);
 				return basicSetStockitem((StockItem)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -180,8 +192,6 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 		switch (eContainerFeatureID()) {
 			case DpPackage.SCHUIF__DIEPVRIES:
 				return eInternalContainer().eInverseRemove(this, DpPackage.DIEPVRIES__SCHUIVEN, Diepvries.class, msgs);
-			case DpPackage.SCHUIF__STOCKITEM:
-				return eInternalContainer().eInverseRemove(this, DpPackage.STOCK_ITEM__SCHUIF, StockItem.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -249,7 +259,7 @@ public class SchuifImpl extends EObjectImpl implements Schuif {
 			case DpPackage.SCHUIF__DIEPVRIES:
 				return getDiepvries() != null;
 			case DpPackage.SCHUIF__STOCKITEM:
-				return getStockitem() != null;
+				return stockitem != null;
 		}
 		return super.eIsSet(featureID);
 	}

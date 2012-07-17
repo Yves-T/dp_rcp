@@ -3,21 +3,21 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dp" nsURI="http://dp/1.0" nsPrefix="dp">
   <eClassifiers xsi:type="ecore:EClass" name="StockItem">
     <eStructuralFeatures xsi:type="ecore:EReference" name="categorie" eType="#//Categorie"
-        containment="true" eOpposite="#//Categorie/stockitem"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="produkten" eType="#//Produkt"
-        containment="true" eOpposite="#//Produkt/stockitem"/>
+        eOpposite="#//Categorie/stockitems"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="produkt" eType="#//Produkt"
+        eOpposite="#//Produkt/stockitems"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="schuif" eType="#//Schuif"
-        containment="true" eOpposite="#//Schuif/stockitem"/>
+        eOpposite="#//Schuif/stockitem"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="aantal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="datum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="info" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Categorie">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stockitem" eType="#//StockItem"
-        eOpposite="#//StockItem/categorie"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stockitems" upperBound="-1"
+        eType="#//StockItem" containment="true" eOpposite="#//StockItem/categorie"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="naam" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="produkten" upperBound="-1"
-        eType="#//Produkt" eOpposite="#//Produkt/categories"/>
+        eType="#//Produkt" containment="true" eOpposite="#//Produkt/categories"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Diepvries">
     <eStructuralFeatures xsi:type="ecore:EReference" name="schuiven" upperBound="-1"
@@ -28,13 +28,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="diepvries" eType="#//Diepvries"
         eOpposite="#//Diepvries/schuiven"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stockitem" eType="#//StockItem"
-        eOpposite="#//StockItem/schuif"/>
+        containment="true" eOpposite="#//StockItem/schuif"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Produkt">
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" lowerBound="1"
         eType="#//Categorie" eOpposite="#//Categorie/produkten"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stockitem" eType="#//StockItem"
-        eOpposite="#//StockItem/produkten"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stockitems" upperBound="-1"
+        eType="#//StockItem" eOpposite="#//StockItem/produkt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="naam" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>
