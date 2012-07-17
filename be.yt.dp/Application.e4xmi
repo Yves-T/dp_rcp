@@ -20,15 +20,18 @@
         <children xsi:type="menu:HandledToolItem" xmi:id="_IGWykMmoEeGkSt1K8Rsovw" elementId="be.yt.dp.handledtoolitem.exit" label="Exit" command="_OwjPIMmnEeGkSt1K8Rsovw"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_MKCqcMmoEeGkSt1K8Rsovw" elementId="be.yt.dp.handledtoolitem.newcategory" label="New category" command="_UKnEEMmnEeGkSt1K8Rsovw"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_8F908MnKEeGnh_T1a8QE_g" elementId="be.yt.dp.handledtoolitem.newProdukt" label="add Produkt" command="_0PnEEMnHEeGnh_T1a8QE_g"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_qO73wNAGEeGK1PaskaSYFA" elementId="be.yt.dp.handledtoolitem.deletestock" label="Delete Stock" command="_gwluANAGEeGK1PaskaSYFA"/>
       </children>
     </trimBars>
   </children>
   <handlers xmi:id="_eZghAMmnEeGkSt1K8Rsovw" elementId="be.yt.dp.handler.exit" contributionURI="bundleclass://be.yt.dp/be.yt.dp.ui.handlers.ExitHandler" command="_OwjPIMmnEeGkSt1K8Rsovw"/>
   <handlers xmi:id="_x19SoMmnEeGkSt1K8Rsovw" elementId="be.yt.dp.handler.newcategory" contributionURI="bundleclass://be.yt.dp/be.yt.dp.ui.handlers.AddNewCategoryHandler" command="_UKnEEMmnEeGkSt1K8Rsovw"/>
   <handlers xmi:id="_IlnB8MnKEeGnh_T1a8QE_g" elementId="be.yt.dp.handler.newprodukt" contributionURI="bundleclass://be.yt.dp/be.yt.dp.ui.handlers.AddNewProduktHandler" command="_0PnEEMnHEeGnh_T1a8QE_g"/>
+  <handlers xmi:id="_mbMgYNAGEeGK1PaskaSYFA" elementId="be.yt.dp.handler.0" contributionURI="bundleclass://be.yt.dp/be.yt.dp.ui.handlers.DeleteStockItemHandler" command="_gwluANAGEeGK1PaskaSYFA"/>
   <commands xmi:id="_OwjPIMmnEeGkSt1K8Rsovw" elementId="be.yt.dp.command.exit" commandName="Exit"/>
   <commands xmi:id="_UKnEEMmnEeGkSt1K8Rsovw" elementId="be.yt.dp.command.newcategory" commandName="New Category"/>
   <commands xmi:id="_0PnEEMnHEeGnh_T1a8QE_g" elementId="be.yt.dp.command.newprodukt" commandName="New Produkt"/>
+  <commands xmi:id="_gwluANAGEeGK1PaskaSYFA" elementId="be.yt.dp.command.deletestock" commandName="Delete stockitem"/>
   <addons xmi:id="_m_5a8cmaEeGkSt1K8Rsovw" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_m_5a8smaEeGkSt1K8Rsovw" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_m_5a88maEeGkSt1K8Rsovw" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

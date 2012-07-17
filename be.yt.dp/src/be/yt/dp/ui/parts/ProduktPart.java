@@ -17,12 +17,15 @@ import org.eclipse.e4.ui.model.application.ui.MDirtyable;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
+import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellLabelProvider;
-import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationListener;
 import org.eclipse.jface.viewers.ColumnViewerEditorDeactivationEvent;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.ViewerCell;
@@ -36,24 +39,25 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 
-import dp.Categorie;
-import dp.Produkt;
-import dp.StockItem;
-
-
 import be.yt.dp.data.provider.AantalEdittingSupport;
 import be.yt.dp.data.provider.DateEdditingSupport;
 import be.yt.dp.data.provider.NameEdittinSupport;
 import be.yt.dp.data.provider.TableModelProvider;
+import dp.Categorie;
+import dp.Produkt;
+import dp.StockItem;
 
 public class ProduktPart {
 	private TableViewer viewer;
 	private Categorie selectedCategory;
 	private static final String DATE_FORMAT = "dd/MM/yy";
 	Shell shell;
-	
+
 	@Inject
 	MDirtyable dirty;
+
+	@Inject
+	ESelectionService eSelectionService;
 
 	@PostConstruct
 	public void execute(MApplication application, EModelService eModelService,
@@ -129,6 +133,29 @@ public class ProduktPart {
 				// TODO Auto-generated method stub
 				System.out.println("aftereditoractivated");
 				dirty.setDirty(true);
+			}
+		});
+
+		// listen to a selection in the table and put the selection in
+		// eSelectionServices
+		viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				IStructuredSelection sel = (IStructuredSelection) viewer
+						.getSelection();
+				@SuppressWarnings("unchecked")
+				List<StockItem> stockList = sel.toList();
+				StockItem stockItem = (StockItem) sel.getFirstElement(); // this
+																			// can
+																			// return
+																			// null
+																			// !!
+				eSelectionService.setSelection(stockList);
+				if (stockItem != null) {
+					System.out.println("selected a stockitem with aantal : "
+							+ stockItem.getAantal());
+				}
 			}
 		});
 	}
