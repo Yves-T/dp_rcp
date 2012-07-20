@@ -44,7 +44,7 @@ public class SchuifDAOImpl extends DAO implements SchuifDAO {
         @SuppressWarnings("unchecked")
         public List<Schuif> findall() {
                 Session session = getCurrentSession();
-                Query query = session.createQuery("from Schuif order by schuifId");
+                Query query = session.createQuery("from Schuif order by nummer");
                 return query.list();
         }
 } // end class SchuifDAOImpl

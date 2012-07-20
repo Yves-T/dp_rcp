@@ -1,5 +1,7 @@
 package be.yt.dp.ui.dialog;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.eclipse.jface.dialogs.IMessageProvider;
@@ -26,18 +28,24 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 import dp.Produkt;
+import dp.Schuif;
 
 public class NewStockItemDialog extends TitleAreaDialog {
 	private Text aantalText;
-	private Text datumText;
+	private Text infoText;
 	private String aantal;
+	private String info;
 	private String datum;
 	private String produkt;
+	private String schuif;
 	List<Produkt>prodList;
+	List<Schuif>schuifList;
 
-	public NewStockItemDialog(Shell parentShell,List<Produkt> prodList) {
+	public NewStockItemDialog(Shell parentShell,List<Produkt> prodList,List<Schuif>schuifList) {
 		super(parentShell);
 		this.prodList = prodList;
+		this.schuifList = schuifList;
+		info="";
 	}
 
 	@Override
@@ -68,6 +76,20 @@ public class NewStockItemDialog extends TitleAreaDialog {
 		aantalText = new Text(parent, SWT.BORDER);
 		aantalText.setLayoutData(gridData);
 
+		gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
+
+		// input for info field
+
+		Label label5 = new Label(parent, SWT.NONE);
+		label5.setText("Info");
+
+		infoText = new Text(parent, SWT.BORDER);
+		infoText.setLayoutData(gridData);
+
+		// input for date
+
 		Label label2 = new Label(parent, SWT.NONE);
 		label2.setText("Datum");
 		// You should not re-use GridData
@@ -76,6 +98,10 @@ public class NewStockItemDialog extends TitleAreaDialog {
 		gridData.horizontalAlignment = GridData.FILL;
 		DateTime dateD = new DateTime(parent, SWT.DATE | SWT.DROP_DOWN);
 		dateD.setLayoutData(gridData);
+		//init date in case user pushed OK button without selecting anything
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+		datum = sdf.format(date);
 		// if a date is selected put it in the datum string
 		dateD.addSelectionListener(new SelectionAdapter() {
 
@@ -90,7 +116,7 @@ public class NewStockItemDialog extends TitleAreaDialog {
 			}
 			
 		});
-		// try comboviewer
+		// comboviewer for Produkt
 		Label label3 = new Label(parent, SWT.NONE);
 		label3.setText("Produkt");
 
@@ -116,6 +142,9 @@ public class NewStockItemDialog extends TitleAreaDialog {
 		//make sure that the comboviewer displays the first item in catlist
 		StructuredSelection structuredSelection = new StructuredSelection(prodList.get(0));
 		comboViewer.setSelection(structuredSelection,true);
+		// init produkt value in case user has pushed OK button whitout
+		// selecting anything
+		produkt = prodList.get(0).getNaam();
 		comboViewer
 				.addSelectionChangedListener(new ISelectionChangedListener() {
 					@Override
@@ -126,6 +155,48 @@ public class NewStockItemDialog extends TitleAreaDialog {
 								.getFirstElement()).getNaam());
 						produkt = ((Produkt) selection.getFirstElement())
 								.getNaam();
+					}
+				});
+
+		// comboviewer for schuif
+		Label label4 = new Label(parent, SWT.NONE);
+		label4.setText("Schuif");
+
+		gridData = new GridData();
+		gridData.grabExcessHorizontalSpace = true;
+		gridData.horizontalAlignment = GridData.FILL;
+		ComboViewer schuifComboViewer = new ComboViewer(parent, SWT.READ_ONLY);
+
+		schuifComboViewer
+				.setContentProvider(ArrayContentProvider.getInstance());
+		schuifComboViewer.setLabelProvider(new LabelProvider() {
+			@Override
+			public String getText(Object element) {
+				if (element instanceof Schuif) {
+					Schuif schuif = (Schuif) element;
+					return String.valueOf(schuif.getNummer());
+				}
+				return super.getText(element);
+			}
+		});
+
+		schuifComboViewer.setInput(schuifList);
+		// make sure that the comboviewer displays the first item in catlist
+		StructuredSelection schuifStructuredSelection = new StructuredSelection(
+				schuifList.get(0));
+		schuifComboViewer.setSelection(schuifStructuredSelection, true);
+		// init schuif in case has pushed OK button without selecting anything
+		schuif = String.valueOf(schuifList.get(0).getNummer());
+		schuifComboViewer
+				.addSelectionChangedListener(new ISelectionChangedListener() {
+					@Override
+					public void selectionChanged(SelectionChangedEvent event) {
+						IStructuredSelection selection = (IStructuredSelection) event
+								.getSelection();
+						System.out.println(((Schuif) selection
+								.getFirstElement()).getNummer());
+						schuif = String.valueOf(((Schuif) selection
+								.getFirstElement()).getNummer());
 					}
 				});
 
@@ -186,13 +257,13 @@ public class NewStockItemDialog extends TitleAreaDialog {
 	private boolean isValidInput() {
 		boolean valid = true;
 		if (aantalText.getText().length() == 0) {
-			setErrorMessage("Please maintain the first name");
+			setErrorMessage("Vul het aantal in");
 			valid = false;
 		}
-		if (datum.length() == 0) {
-			setErrorMessage("Please maintain the last name");
-			valid = false;
-		}
+//		if (datum.length() == 0) {
+//			setErrorMessage("Please maintain the last name");
+//			valid = false;
+//		}
 		return valid;
 	}
 
@@ -205,7 +276,8 @@ public class NewStockItemDialog extends TitleAreaDialog {
 	// and the Text Fields are not accessible any more.
 	private void saveInput() {
 		aantal = aantalText.getText();
-		datum = datumText.getText();
+		info = infoText.getText();
+		//datum = datumText.getText();
 	}
 
 	@Override
@@ -224,5 +296,13 @@ public class NewStockItemDialog extends TitleAreaDialog {
 
 	public String getProduktAsString() {
 		return produkt;
+	}
+
+	public String getSchuifAsString() {
+		return schuif;
+	}
+
+	public String getInfo() {
+		return info;
 	}
 }

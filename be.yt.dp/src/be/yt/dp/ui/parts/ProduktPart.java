@@ -41,6 +41,7 @@ import org.eclipse.swt.widgets.Text;
 
 import be.yt.dp.data.provider.AantalEdittingSupport;
 import be.yt.dp.data.provider.DateEdditingSupport;
+import be.yt.dp.data.provider.InfoEdittingSupport;
 import be.yt.dp.data.provider.NameEdittinSupport;
 import be.yt.dp.data.provider.TableModelProvider;
 import dp.Categorie;
@@ -170,8 +171,8 @@ public class ProduktPart {
 
 	// This will create the columns for the table
 	private void createColums(Composite parent, TableViewer viewer2) {
-		String[] titles = { "Naam", "Aantal", "Datum" };
-		int[] bounds = { 100, 100, 100 };
+		String[] titles = { "Naam", "Aantal", "Datum", "info" };
+		int[] bounds = { 100, 100, 100, 100 };
 
 		// first column is for the produkt name
 		TableViewerColumn col = createTableViewerColumn(titles[0], bounds[0], 0);
@@ -211,6 +212,18 @@ public class ProduktPart {
 
 		});
 		col.setEditingSupport(new DateEdditingSupport(viewer2, shell));
+
+		// fourth column is for the info
+		col = createTableViewerColumn(titles[3], bounds[3], 3);
+		col.setLabelProvider(new CellLabelProvider() {
+
+			@Override
+			public void update(ViewerCell cell) {
+				cell.setText(((StockItem) cell.getElement()).getInfo());
+			}
+
+		});
+		col.setEditingSupport(new InfoEdittingSupport(viewer2));
 	}
 
 	private TableViewerColumn createTableViewerColumn(String title, int bound,

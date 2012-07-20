@@ -15,10 +15,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 
+import be.yt.dp.ui.controller.TreeViewerPartController;
 import be.yt.dp.ui.dialog.NewStockItemDialog;
 import be.yt.dp.ui.parts.ProduktPart;
 import dp.Categorie;
 import dp.Produkt;
+import dp.Schuif;
 
 public class AddNewStockItemHandler {
 
@@ -43,6 +45,13 @@ public class AddNewStockItemHandler {
 			MessageDialog.openError(shell, "Fout!",
 					"Selecteer eerst een categorie in de boomstructuur!");
 		} else {
+			List<Schuif> schuifList = TreeViewerPartController.getInstance()
+					.findSchuiven();
+
+			for (Schuif schuif : schuifList) {
+				System.out.println("schuiven : " + schuif.getNummer());
+			}
+
 			List<Produkt> produkts = c.getProdukten();
 
 			for (Produkt p : produkts) {
@@ -50,12 +59,14 @@ public class AddNewStockItemHandler {
 			}
 
 			// fetch categories from db and display dialog
-			NewStockItemDialog dialog = new NewStockItemDialog(shell, produkts);
+			NewStockItemDialog dialog = new NewStockItemDialog(shell, produkts,schuifList);
 			dialog.create();
 			if (dialog.open() == Window.OK) {
 				System.out.println(dialog.getAantalAsString());
 				System.out.println(dialog.getDatumAsString());
 				System.out.println(dialog.getProduktAsString());
+				System.out.println(dialog.getSchuifAsString());
+				System.out.println(dialog.getInfo());
 			}
 		}
 	}

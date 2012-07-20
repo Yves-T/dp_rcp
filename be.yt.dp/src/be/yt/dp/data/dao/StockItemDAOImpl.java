@@ -69,10 +69,12 @@ public class StockItemDAOImpl extends DAO implements StockitemDAO {
                 return query.list();
         }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<StockItem> findStockItemsPerCategorie(String naam) {
 		Session session = getCurrentSession();
-		Query query = session.createQuery("from StockItem where categorie.naam = :name");
+		Query query = session
+				.createQuery("from StockItem where categorie.naam = :name");
 		query.setString("name", naam);
 		return query.list();
 	}

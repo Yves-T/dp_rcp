@@ -56,6 +56,15 @@ public class SchuifServiceImpl implements SchuifService {
 
 	@Override
 	public List<Schuif> findall() {
-		return schuifDAO.findall();
+		try {
+			schuifDAO.beginTransaction();
+			List<Schuif> schuifList = schuifDAO.findall();
+			schuifDAO.commit();
+			return schuifList;
+		} catch (RuntimeException ex) {
+			schuifDAO.rollback();
+			throw ex;
+		}
+
 	}
 } // end class SchuifServiceImpl
