@@ -23,7 +23,9 @@ Require-Bundle: org.eclipse.swt;bundle-version="3.100.0",
  be.yt.dp.model;bundle-version="1.0.0",
  org.hibernate;bundle-version="4.1.1",
  org.dom4j;bundle-version="1.6.1",
- org.apache.commons.logging;bundle-version="1.0.4"
+ org.apache.commons.logging;bundle-version="1.0.4",
+ org.eclipse.e4.core.contexts;bundle-version="1.1.0",
+ org.eclipse.core.expressions;bundle-version="3.4.400"
 Export-Package: be.yt.dp.data.dao,
  be.yt.dp.data.service,
  be.yt.dp.data.util,

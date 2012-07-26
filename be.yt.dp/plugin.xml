@@ -45,5 +45,11 @@
             uri="be.yt.dp.package1">
       </package>
    </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="be.yt.dp.definition1">
+      </definition>
+   </extension>
 
 </plugin>

@@ -77,6 +77,7 @@ public class ProduktPart {
 		searchText.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL
 				| GridData.HORIZONTAL_ALIGN_FILL));
 		createViewer(parent);
+
 	}
 
 	private void createViewer(Composite parent) {
