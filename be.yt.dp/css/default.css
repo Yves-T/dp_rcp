@@ -1,0 +1,43 @@
+Label {
+	font: Verdana 8px;
+	color: red;
+}
+
+Composite Label {
+	color: red;
+}
+
+Text {
+	font: Verdana 8px;
+}
+
+/* Identifies only those SWT Text elements 
+   appearing within a Composite */
+
+Composite Text {
+	background-color: red;	
+	color: red;
+}
+
+SashForm {
+	background-color: #c1d5ef;
+}
+
+
+/* background uses a gradient */
+
+.MTrimBar {
+
+	background-color: #e3efff #c1d5ef;
+	color: red;
+	font: Verdana 8px;
+}
+
+Shell {
+    background-color: #e3efff #c1d5ef 60%;
+} 
+
+.MPartStack {
+  swt-minimize-visible: false;
+  swt-maximize-visible: false;
+}

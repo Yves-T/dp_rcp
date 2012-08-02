@@ -3,18 +3,6 @@
 <plugin>
 
    <extension
-         id="product"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="org.eclipse.e4.ui.workbench.swt.E4Application"
-            name="dp">
-         <property
-               name="appName"
-               value="dp">
-         </property>
-      </product>
-   </extension>
-   <extension
          id="product1"
          point="org.eclipse.core.runtime.products">
       <product
@@ -23,6 +11,10 @@
          <property
                name="appName"
                value="dp">
+         </property>
+         <property
+               name="cssTheme"
+               value="be.yt.dp.defaultTheme">
          </property>
       </product>
    </extension>
@@ -50,6 +42,14 @@
       <definition
             id="be.yt.dp.definition1">
       </definition>
+   </extension>
+   <extension
+         point="org.eclipse.e4.ui.css.swt.theme">
+      <theme
+            basestylesheeturi="css/default.css"
+            id="be.yt.dp.standardtheme"
+            label="Standard">
+      </theme>
    </extension>
 
 </plugin>

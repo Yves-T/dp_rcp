@@ -8,7 +8,12 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
-
+import org.eclipse.core.databinding.observable.list.WritableList;
+import org.eclipse.emf.databinding.EMFDataBindingContext;
+import org.eclipse.emf.databinding.EMFProperties;
+import org.eclipse.emf.databinding.IEMFValueProperty;
+import org.eclipse.emf.databinding.internal.EMFValueProperty;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.di.Persist;
@@ -17,7 +22,11 @@ import org.eclipse.e4.ui.model.application.ui.MDirtyable;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
+import org.eclipse.jface.databinding.swt.ISWTObservable;
+import org.eclipse.jface.databinding.swt.ISWTObservableValue;
+import org.eclipse.jface.databinding.viewers.ViewerSupport;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
@@ -29,6 +38,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -45,6 +55,7 @@ import be.yt.dp.data.provider.InfoEdittingSupport;
 import be.yt.dp.data.provider.NameEdittinSupport;
 import be.yt.dp.data.provider.TableModelProvider;
 import dp.Categorie;
+import dp.DpPackage;
 import dp.Produkt;
 import dp.StockItem;
 
@@ -52,6 +63,7 @@ public class ProduktPart {
 	private TableViewer viewer;
 	private Categorie selectedCategory;
 	private static final String DATE_FORMAT = "dd/MM/yy";
+	private WritableList input;
 	Shell shell;
 
 	@Inject
@@ -94,12 +106,12 @@ public class ProduktPart {
 		// contentProvider
 		TableModelProvider tableModelProvider = TableModelProvider
 				.getInstance();
-		tableModelProvider.setSelectedCategory(selectedCategory);
-		if (selectedCategory == null) {
-			viewer.setInput(Collections.EMPTY_LIST);
-		} else {
-			viewer.setInput(selectedCategory.getStockitems());
-		}
+//		tableModelProvider.setSelectedCategory(selectedCategory);
+//		if (selectedCategory == null) {
+//			viewer.setInput(Collections.EMPTY_LIST);
+//		} else {
+//			viewer.setInput(selectedCategory.getStockitems());
+//		}
 
 		// Layout the viewer
 		GridData gridData = new GridData();
@@ -164,6 +176,15 @@ public class ProduktPart {
 				}
 			}
 		});
+		
+			//viewer.setInput(selectedCategory.getStockitems());
+		if(selectedCategory != null) {
+			input = new WritableList(selectedCategory.getStockitems(),StockItem.class);
+			EStructuralFeature[] values = {DpPackage.Literals.STOCK_ITEM__PRODUKT,DpPackage.Literals.STOCK_ITEM__AANTAL,
+					DpPackage.Literals.STOCK_ITEM__DATUM,DpPackage.Literals.STOCK_ITEM__INFO};
+			ViewerSupport.bind(viewer, input, EMFProperties.values(values));
+		}
+		
 	}
 
 	public TableViewer getViewer() {
