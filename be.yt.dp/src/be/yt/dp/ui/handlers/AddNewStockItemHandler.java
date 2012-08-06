@@ -74,7 +74,6 @@ public class AddNewStockItemHandler {
 	
 	@CanExecute
 	public boolean canExecute(@Named(IServiceConstants.ACTIVE_PART) MPart part) {
-		System.out.println("can execute is called");
 		// enable item if active part is part with id "be.yt.dp.part.produkt"
 		if ("be.yt.dp.part.produkt".equals(part.getElementId())) {
 			return true;
