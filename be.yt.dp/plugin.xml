@@ -16,17 +16,9 @@
                name="cssTheme"
                value="be.yt.dp.defaultTheme">
          </property>
-      </product>
-   </extension>
-   <extension
-         id="product2"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="org.eclipse.e4.ui.workbench.swt.E4Application"
-            name="dp">
          <property
-               name="appName"
-               value="dp">
+               name="applicationCSS"
+               value="platform:/plugin/be.yt.dp/css/default.css">
          </property>
       </product>
    </extension>
@@ -49,6 +41,11 @@
             basestylesheeturi="css/default.css"
             id="be.yt.dp.standardtheme"
             label="Standard">
+      </theme>
+      <theme
+            basestylesheeturi="css/default.css"
+            id="be.yt.dp.defaultTheme"
+            label="defaultTheme">
       </theme>
    </extension>
 

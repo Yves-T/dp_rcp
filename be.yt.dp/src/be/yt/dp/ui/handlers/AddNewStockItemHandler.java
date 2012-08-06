@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -70,6 +71,18 @@ public class AddNewStockItemHandler {
 			}
 		}
 	}
+	
+	@CanExecute
+	public boolean canExecute(@Named(IServiceConstants.ACTIVE_PART) MPart part) {
+		System.out.println("can execute is called");
+		// enable item if active part is part with id "be.yt.dp.part.produkt"
+		if ("be.yt.dp.part.produkt".equals(part.getElementId())) {
+			return true;
+		}
+
+		// disable item if any other part is active
+		return false;
+	}
 
 	private void findObjectsById(MApplication application, EModelService service) {
 
@@ -80,6 +93,7 @@ public class AddNewStockItemHandler {
 		MPart part = findElements.get(0);
 		ProduktPart p = (ProduktPart) part.getObject();
 		p.getViewer().refresh();
+		p.getViewer().getTable().getColumn(1).setWidth(500);
 
 	}
 
